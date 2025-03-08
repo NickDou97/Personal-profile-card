@@ -89,14 +89,14 @@ body {
 
 /* Newsletter form container (hidden by default, shown on click) */
 #ml-form-container {
-    display: none; /* Hidden until triggered */
+    display: none; /* Kept for reference, but not used with ml-onclick-form */
 }
 
 #ml-form-container.active {
     display: block;
 }
 
-/* Override MailerLite injected styles */
+/* Override MailerLite injected styles (for when the form loads) */
 .ml-embedded .ml-form-embedContainer {
     width: 100%;
     background-color: transparent !important;
