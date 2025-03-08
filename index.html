@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- MailerLite Universal -->
+    <script src="https://assets.mailerlite.com/js/universal.js" async></script>
     <script>
         (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
         (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
@@ -23,8 +24,9 @@
             I help businesses thrive with AI. Get exclusive insights on AI trends, tools, and strategies to boost your growth—join my newsletter today!
         </p>
         <button class="ml-onclick-form subscribe-button" onclick="showForm()">Join My AI Newsletter</button>
+        <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="subscribe-button book-meeting-button">Book a Meeting</a>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/nick-dou/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
@@ -32,7 +34,7 @@
     </div>
     <script>
         function showForm() {
-            console.log('Button clicked - attempting to show form with ID: AbvDrk');
+            console.log('Newsletter button clicked - attempting to show form with ID: AbvDrk');
             if (typeof ml === 'function') {
                 ml('show', 'AbvDrk', true);
             } else {
