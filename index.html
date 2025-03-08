@@ -22,27 +22,16 @@
         <p class="bio">
             I help businesses thrive with AI. Get exclusive insights on AI trends, tools, and strategies to boost your growth—join my newsletter today!
         </p>
-        <button class="subscribe-button" onclick="showForm()">Join the Newsletter</button>
-        <div class="newsletter-form" id="ml-form-container">
-            <div class="ml-embedded" data-form="yASlPr"></div>
-        </div>
+        <button class="ml-onclick-form subscribe-button" onclick="ml('show', 'AbvDrk', true)">Join My AI Newsletter</button>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/nick-dou/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/NickDou97" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         </div>
         <p class="footer-text">© 2025 Nick Dou AI Consulting</p>
     </div>
     <script>
-        function showForm() {
-            if (typeof ml === 'function') {
-                console.log('Showing form with ID: yASlPr');
-                ml('showForm', 'yASlPr');
-                document.getElementById('ml-form-container').classList.add('active');
-            } else {
-                console.error('MailerLite script not loaded');
-            }
-        }
+        // No additional JavaScript needed since the onclick handles the form display
     </script>
 </body>
 </html>
