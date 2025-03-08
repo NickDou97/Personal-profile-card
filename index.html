@@ -7,18 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- MailerLite Universal -->
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1375191');
+    </script>
+    <!-- End MailerLite Universal -->
 </head>
 <body>
     <div class="profile-card">
         <img src="img/profile.jpg" alt="Profile Photo" class="profile-image">
         <h1 class="name">Nick Dou</h1>
         <p class="bio">
-            Welcome to my AI Consulting Business! Sign up for my newsletter to get the latest insights on AI trends, tools, and strategies to grow your business.
+            Welcome to my AI Consulting Business! Click below to sign up for my newsletter to get the latest insights on AI trends, tools, and strategies to grow your business.
         </p>
-        <form class="newsletter-form" action="path-to-your-form-handler" method="post">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-        </form>
+        <button class="subscribe-button" onclick="showForm()">Subscribe</button>
+        <div class="newsletter-form" id="ml-form-container">
+            <div class="ml-embedded" data-form="yASlPr"></div>
+        </div>
         <div class="social-icons">
             <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
@@ -26,5 +35,10 @@
         </div>
         <p class="footer-text">© 2025 Nick Dou AI Consulting</p>
     </div>
+    <script>
+        function showForm() {
+            ml('showForm', 'yASlPr'); // Trigger the form with data-form="yASlPr"
+        }
+    </script>
 </body>
 </html>
