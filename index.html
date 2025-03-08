@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI strategy consulting to help businesses implement effective AI solutions that drive measurable ROI">
-    <meta property="og:title" content="Nick Dou | AI Strategy Consultant">
-    <meta property="og:description" content="AI strategy consulting to help businesses implement effective AI solutions that drive measurable ROI">
+    <meta name="description" content="Clarity AI helps businesses implement effective AI solutions that drive measurable ROI and transform operations">
+    <meta property="og:title" content="Clarity AI | AI Strategy & Implementation">
+    <meta property="og:description" content="Strategic AI consulting to help businesses implement effective AI solutions that drive measurable ROI">
     <meta property="og:type" content="website">
     
-    <title>Nick Dou | AI Strategy Consultant</title>
+    <title>Clarity AI | AI Strategy & Implementation</title>
     
     <!-- Preconnect to CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -29,241 +29,387 @@
     <!-- End MailerLite Universal -->
 </head>
 <body>
+    <div class="gradient-bg">
+        <div class="neural-animation" id="neural-network"></div>
+    </div>
+    
     <header>
         <nav class="navbar">
             <div class="logo">
-                <span>Nick Dou</span>
+                <span>Clarity<span class="highlight">AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#process">Process</a>
+                <a href="#testimonials">Results</a>
+                <a href="#newsletter">Insights</a>
             </div>
             <a href="#contact" class="nav-cta">Get Started</a>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section - Awareness -->
         <section class="hero">
-            <div class="hero-content">
-                <h1>Turn AI Complexity Into Business Growth</h1>
-                <p class="hero-subtitle">I help forward-thinking businesses implement AI solutions that deliver clear ROI while avoiding costly implementation mistakes.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="hero-cta">Schedule Free Strategy Call</a>
-                    <a href="#services" class="hero-secondary">View Services</a>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="badge">AI Strategy & Implementation</div>
+                    <h1>Bringing <span class="gradient-text">Clarity</span> to Your AI Journey</h1>
+                    <p class="hero-subtitle">We help forward-thinking businesses implement AI solutions that deliver clear ROI while avoiding costly implementation mistakes.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="primary-button">
+                            <span class="button-text">Schedule Free Strategy Call</span>
+                            <span class="button-icon"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="#services" class="secondary-button">Explore Services</a>
+                    </div>
+                    <div class="hero-social-proof">
+                        <div class="proof-item">
+                            <span class="proof-number">25+</span>
+                            <span class="proof-text">Enterprise AI Projects</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="proof-item">
+                            <span class="proof-number">40%+</span>
+                            <span class="proof-text">Avg. Efficiency Gains</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="proof-item">
+                            <span class="proof-number">3.5x</span>
+                            <span class="proof-text">ROI for Clients</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-social-proof">
-                    <div class="proof-item">
-                        <span class="proof-number">10+</span>
-                        <span class="proof-text">Enterprise AI Projects</span>
-                    </div>
-                    <div class="proof-item">
-                        <span class="proof-number">30%+</span>
-                        <span class="proof-text">Avg. Efficiency Gains</span>
-                    </div>
-                    <div class="proof-item">
-                        <span class="proof-number">3x</span>
-                        <span class="proof-text">ROI for Clients</span>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <div class="floating-elements">
+                            <div class="float-element ai-brain">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="float-element ai-chart">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="float-element ai-cog">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="float-element ai-lightbulb">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                        </div>
+                        <div class="image-wrapper">
+                            <img src="img/profile.jpg" alt="Nick Dou - Clarity AI Founder" class="profile-image">
+                        </div>
+                        <div class="blob-shape"></div>
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="img/profile.jpg" alt="Nick Dou - AI Strategy Consultant" class="profile-image">
+            <div class="wave-divider">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+                    <path fill="#ffffff" fill-opacity="1" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section class="clients">
+            <div class="container">
+                <div class="client-banner">
+                    <p>Trusted by innovative companies</p>
+                    <div class="client-logos">
+                        <div class="client-logo">
+                            <i class="fas fa-building"></i> 
+                            <span>TechCorp</span>
+                        </div>
+                        <div class="client-logo">
+                            <i class="fas fa-hospital"></i>
+                            <span>HealthNet</span>
+                        </div>
+                        <div class="client-logo">
+                            <i class="fas fa-university"></i>
+                            <span>FinSolutions</span>
+                        </div>
+                        <div class="client-logo">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>RetailPro</span>
+                        </div>
+                        <div class="client-logo">
+                            <i class="fas fa-industry"></i>
+                            <span>ManufactureX</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Problems Section - Pain Points -->
         <section class="problems" id="problems">
-            <div class="section-intro">
-                <h2>Is Your Business AI-Ready?</h2>
-                <p>Many organizations struggle with these common AI implementation challenges:</p>
-            </div>
-            <div class="problems-grid">
-                <div class="problem-card">
-                    <div class="problem-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <h3>Wasted Investment</h3>
-                    <p>Investing in AI without clear strategy leads to expensive projects with minimal returns</p>
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-tag">Common Challenges</div>
+                    <h2>Why AI Implementations <span class="gradient-text">Fail</span></h2>
+                    <p>Many organizations struggle with these common AI adoption challenges:</p>
                 </div>
-                <div class="problem-card">
-                    <div class="problem-icon"><i class="fas fa-puzzle-piece"></i></div>
-                    <h3>Integration Failures</h3>
-                    <p>Most AI implementations fail to integrate with existing workflows and business processes</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon"><i class="fas fa-user-slash"></i></div>
-                    <h3>Talent Shortage</h3>
-                    <p>Finding, hiring, and retaining AI specialists is increasingly difficult and expensive</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Unrealistic Expectations</h3>
-                    <p>Without proper guidance, organizations set unrealistic timelines and performance goals</p>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="card-accent"></div>
+                        <div class="problem-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <h3>Wasted Investment</h3>
+                        <p>Organizations invest heavily in AI without clear strategy, leading to expensive projects with minimal returns.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="card-accent"></div>
+                        <div class="problem-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>Integration Failures</h3>
+                        <p>Most AI implementations fail to integrate with existing workflows, creating frustrating adoption barriers.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="card-accent"></div>
+                        <div class="problem-icon"><i class="fas fa-user-slash"></i></div>
+                        <h3>Talent Shortage</h3>
+                        <p>Finding, hiring, and retaining AI specialists is increasingly difficult and prohibitively expensive.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="card-accent"></div>
+                        <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Unrealistic Expectations</h3>
+                        <p>Without proper guidance, organizations set unrealistic timelines and performance goals for AI systems.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Services Section - Interest -->
         <section class="services" id="services">
-            <div class="section-intro">
-                <h2>AI Consulting Services</h2>
-                <p>Expert guidance to transform your business with practical AI solutions</p>
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-tag">Our Solutions</div>
+                    <h2>AI Consulting <span class="gradient-text">Services</span></h2>
+                    <p>Expert guidance to transform your business with practical AI solutions</p>
+                </div>
+                <div class="services-container">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-map"></i></div>
+                        <h3>AI Strategy Development</h3>
+                        <ul class="service-features">
+                            <li>AI opportunity assessment</li>
+                            <li>ROI-focused implementation roadmap</li>
+                            <li>Risk mitigation planning</li>
+                            <li>Competitive analysis</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                        <div class="card-design-element"></div>
+                    </div>
+                    <div class="service-card featured">
+                        <div class="popular-tag">Most Popular</div>
+                        <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>AI Implementation Acceleration</h3>
+                        <ul class="service-features">
+                            <li>LLM fine-tuning & deployment</li>
+                            <li>Workflow automation with AI</li>
+                            <li>Integration with existing systems</li>
+                            <li>Training & knowledge transfer</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                        <div class="card-design-element"></div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>AI Education & Training</h3>
+                        <ul class="service-features">
+                            <li>Executive AI literacy workshops</li>
+                            <li>Team capability building</li>
+                            <li>Custom prompt engineering</li>
+                            <li>Ongoing implementation support</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Learn More</a>
+                        <div class="card-design-element"></div>
+                    </div>
+                </div>
             </div>
-            <div class="services-container">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-map"></i></div>
-                    <h3>AI Strategy Development</h3>
-                    <ul class="service-features">
-                        <li>AI opportunity assessment</li>
-                        <li>ROI-focused implementation roadmap</li>
-                        <li>Risk mitigation planning</li>
-                        <li>Competitive analysis</li>
-                    </ul>
-                    <a href="#contact" class="service-cta">Learn More</a>
-                </div>
-                <div class="service-card featured">
-                    <div class="popular-tag">Most Popular</div>
-                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>AI Implementation Acceleration</h3>
-                    <ul class="service-features">
-                        <li>LLM fine-tuning & deployment</li>
-                        <li>Workflow automation with AI</li>
-                        <li>Integration with existing systems</li>
-                        <li>Training & knowledge transfer</li>
-                    </ul>
-                    <a href="#contact" class="service-cta">Learn More</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>AI Education & Training</h3>
-                    <ul class="service-features">
-                        <li>Executive AI literacy workshops</li>
-                        <li>Team capability building</li>
-                        <li>Custom prompt engineering</li>
-                        <li>Ongoing implementation support</li>
-                    </ul>
-                    <a href="#contact" class="service-cta">Learn More</a>
-                </div>
-            </div>
+            <div class="angled-divider"></div>
         </section>
 
         <!-- Process Section - Consideration -->
-        <section class="process">
-            <div class="section-intro">
-                <h2>My Proven AI Implementation Process</h2>
-                <p>A methodical approach that delivers measurable results</p>
-            </div>
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Discovery</h3>
-                        <p>In-depth assessment of your business goals, challenges, and current capabilities to identify high-impact AI opportunities.</p>
-                    </div>
+        <section class="process" id="process">
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-tag">Our Methodology</div>
+                    <h2>The Clarity<span class="highlight">AI</span> <span class="gradient-text">Process</span></h2>
+                    <p>A methodical approach that delivers measurable results</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Strategy</h3>
-                        <p>Develop a customized implementation plan with clear KPIs, resource requirements, and timeline for measurable success.</p>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Discovery</h3>
+                            <p>In-depth assessment of your business goals, challenges, and current capabilities to identify high-impact AI opportunities.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Implementation</h3>
-                        <p>Hands-on guidance through solution development, testing, and deployment with minimal disruption to operations.</p>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Strategy</h3>
+                            <p>Develop a customized implementation plan with clear KPIs, resource requirements, and timeline for measurable success.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-chess"></i>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Optimization</h3>
-                        <p>Continuous performance monitoring and improvement to ensure lasting value and ROI from your AI investments.</p>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Implementation</h3>
+                            <p>Hands-on guidance through solution development, testing, and deployment with minimal disruption to operations.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Optimization</h3>
+                            <p>Continuous performance monitoring and improvement to ensure lasting value and ROI from your AI investments.</p>
+                            <div class="step-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials - Social Proof -->
-        <section class="testimonials">
-            <div class="section-intro">
-                <h2>What Clients Say</h2>
-                <p>Success stories from organizations I've helped transform with AI</p>
-            </div>
-            <div class="testimonials-slider">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"Nick helped us implement an AI-powered customer service solution that reduced response times by 65% while maintaining high satisfaction scores. The ROI was clear within just 3 months."</p>
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-intro">
+                    <div class="section-tag">Success Stories</div>
+                    <h2>What Our Clients <span class="gradient-text">Say</span></h2>
+                    <p>Results from organizations we've helped transform with AI</p>
+                </div>
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Clarity AI helped us implement an AI-powered customer service solution that reduced response times by 65% while maintaining high satisfaction scores. The ROI was clear within just 3 months."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <div class="avatar-placeholder">SJ</div>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>CTO, RetailTech Solutions</p>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CTO, RetailTech Solutions</p>
+                    <div class="testimonial">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Working with Clarity AI transformed how we approach our data analysis. Their AI strategy saved our team 20+ hours per week and uncovered insights we had been missing for years."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <div class="avatar-placeholder">MC</div>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Data Science Lead, FinTech Innovations</p>
+                                <div class="author-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"Working with Nick transformed how we approach our data analysis. His AI strategy saved our team 20+ hours per week and uncovered insights we had been missing for years."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Data Science Lead, FinTech Innovations</p>
-                        </div>
-                    </div>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
                 </div>
-            </div>
-            <div class="testimonial-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
             </div>
         </section>
 
         <!-- Newsletter Section - Conversion (Low Commitment) -->
         <section class="newsletter" id="newsletter">
-            <div class="newsletter-container">
-                <div class="newsletter-content">
-                    <h2>Stay Ahead of AI Trends</h2>
-                    <p>Join my weekly newsletter for exclusive AI insights, implementation tips, and case studies delivered straight to your inbox.</p>
-                    <ul class="newsletter-benefits">
-                        <li><i class="fas fa-check"></i> Weekly AI tool recommendations</li>
-                        <li><i class="fas fa-check"></i> Implementation frameworks & templates</li>
-                        <li><i class="fas fa-check"></i> Early access to workshops & events</li>
-                    </ul>
-                </div>
-                <div class="newsletter-form">
-                    <button class="ml-onclick-form newsletter-button" onclick="showForm()" id="newsletter-button">
-                        <i class="far fa-envelope"></i> Subscribe to AI Insights
-                    </button>
-                    <div id="form-loading" class="form-loading-indicator hidden">Loading form...</div>
-                    <p class="newsletter-guarantee">No spam, ever. Unsubscribe anytime.</p>
+            <div class="blob-background">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+            <div class="container">
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <div class="section-tag light">Weekly Insights</div>
+                        <h2>Stay Ahead of <span class="gradient-text-alt">AI Trends</span></h2>
+                        <p>Join our weekly newsletter for exclusive AI insights, implementation tips, and case studies delivered straight to your inbox.</p>
+                        <ul class="newsletter-benefits">
+                            <li><i class="fas fa-check"></i> <span>Weekly AI tool recommendations</span></li>
+                            <li><i class="fas fa-check"></i> <span>Implementation frameworks & templates</span></li>
+                            <li><i class="fas fa-check"></i> <span>Early access to workshops & events</span></li>
+                        </ul>
+                    </div>
+                    <div class="newsletter-form">
+                        <button class="ml-onclick-form newsletter-button" onclick="showForm()" id="newsletter-button">
+                            <i class="far fa-envelope"></i> Subscribe to AI Insights
+                        </button>
+                        <div id="form-loading" class="form-loading-indicator hidden">Loading form...</div>
+                        <p class="newsletter-guarantee">No spam, ever. Unsubscribe anytime.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact - Conversion (High Commitment) -->
         <section class="contact" id="contact">
-            <div class="contact-container">
-                <div class="contact-content">
-                    <h2>Ready to Transform Your Business with AI?</h2>
-                    <p>Schedule a free 30-minute AI strategy session to discuss your specific challenges and opportunities.</p>
-                    <div class="contact-benefits">
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                            <div class="benefit-text">Identify your highest-impact AI opportunities</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-road"></i></div>
-                            <div class="benefit-text">Get a preliminary implementation roadmap</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon"><i class="fas fa-calculator"></i></div>
-                            <div class="benefit-text">Discuss potential ROI and resource requirements</div>
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-content">
+                        <div class="section-tag">Get Started</div>
+                        <h2>Ready to Transform Your Business <span class="gradient-text">with AI?</span></h2>
+                        <p>Schedule a free 30-minute AI strategy session to discuss your specific challenges and opportunities.</p>
+                        <div class="contact-benefits">
+                            <div class="benefit-item">
+                                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="benefit-text">Identify your highest-impact AI opportunities</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon"><i class="fas fa-road"></i></div>
+                                <div class="benefit-text">Get a preliminary implementation roadmap</div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon"><i class="fas fa-calculator"></i></div>
+                                <div class="benefit-text">Discuss potential ROI and resource requirements</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="contact-cta">
-                    <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="contact-button">
-                        <i class="far fa-calendar-check"></i> Schedule Free Strategy Call
-                    </a>
-                    <p class="contact-guarantee">No obligation, no pressure. Just valuable insights for your business.</p>
+                    <div class="contact-cta">
+                        <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="contact-button">
+                            <i class="far fa-calendar-check"></i> Schedule Free Strategy Call
+                        </a>
+                        <p class="contact-guarantee">No obligation, no pressure. Just valuable insights for your business.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -272,26 +418,64 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <span>Nick Dou</span>
-                <p>AI Strategy Consultant</p>
+                <span>Clarity<span class="highlight">AI</span></span>
+                <p>AI Strategy & Implementation</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#services">AI Strategy</a>
+                    <a href="#services">Implementation</a>
+                    <a href="#services">Training</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#process">Our Process</a>
+                    <a href="#testimonials">Case Studies</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="#newsletter">Newsletter</a>
+                    <a href="#newsletter">AI Guides</a>
+                    <a href="#newsletter">Implementation Tips</a>
+                </div>
             </div>
             <div class="footer-social">
                 <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub Profile">
-                    <i class="fab fa-github"></i>
-                </a>
                 <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter Profile">
                     <i class="fab fa-twitter"></i>
                 </a>
+                <a href="https://github.com/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub Profile">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
-            <p class="footer-text">© 2025 Nick Dou AI Consulting. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="footer-text">© 2025 Clarity AI. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Neural Network Animation
+            createNeuralNetworkAnimation();
+            
             // Check if MailerLite is loaded
             const checkMLLoaded = setInterval(() => {
                 if (typeof ml === 'function') {
@@ -327,6 +511,103 @@
                 });
             });
         });
+        
+        // Neural Network Animation
+        function createNeuralNetworkAnimation() {
+            const container = document.getElementById('neural-network');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const nodeCount = 40;
+            const nodes = [];
+            const connections = [];
+            const connectionDistance = 150;
+            
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const size = Math.random() * 4 + 2;
+                const speedX = (Math.random() - 0.5) * 0.5;
+                const speedY = (Math.random() - 0.5) * 0.5;
+                
+                node.style.left = x + 'px';
+                node.style.top = y + 'px';
+                node.style.width = size + 'px';
+                node.style.height = size + 'px';
+                node.style.opacity = Math.random() * 0.5 + 0.3;
+                
+                container.appendChild(node);
+                
+                nodes.push({
+                    element: node,
+                    x, y, size, speedX, speedY
+                });
+            }
+            
+            // Create connections
+            for (let i = 0; i < nodeCount; i++) {
+                for (let j = i + 1; j < nodeCount; j++) {
+                    const connection = document.createElement('div');
+                    connection.className = 'neural-connection';
+                    container.appendChild(connection);
+                    
+                    connections.push({
+                        element: connection,
+                        from: nodes[i],
+                        to: nodes[j]
+                    });
+                }
+            }
+            
+            // Animation loop
+            function animate() {
+                // Update node positions
+                nodes.forEach(node => {
+                    node.x += node.speedX;
+                    node.y += node.speedY;
+                    
+                    // Bounce off edges
+                    if (node.x <= 0 || node.x >= width) node.speedX *= -1;
+                    if (node.y <= 0 || node.y >= height) node.speedY *= -1;
+                    
+                    node.element.style.left = node.x + 'px';
+                    node.element.style.top = node.y + 'px';
+                });
+                
+                // Update connections
+                connections.forEach(conn => {
+                    const dx = conn.from.x - conn.to.x;
+                    const dy = conn.from.y - conn.to.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < connectionDistance) {
+                        const opacity = 1 - (distance / connectionDistance);
+                        
+                        const centerX = (conn.from.x + conn.to.x) / 2;
+                        const centerY = (conn.from.y + conn.to.y) / 2;
+                        
+                        conn.element.style.width = distance + 'px';
+                        conn.element.style.left = centerX + 'px';
+                        conn.element.style.top = centerY + 'px';
+                        
+                        // Calculate angle for rotation
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        conn.element.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                        conn.element.style.opacity = opacity * 0.5;
+                        conn.element.style.display = 'block';
+                    } else {
+                        conn.element.style.display = 'none';
+                    }
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
         
         function showForm() {
             const loadingIndicator = document.getElementById('form-loading');
