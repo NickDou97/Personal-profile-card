@@ -90,9 +90,10 @@ body {
     box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
-/* Specific styling for the book meeting button */
+/* Improved Spacing for Book a Meeting Button */
 .book-meeting-button {
     background: linear-gradient(90deg, #28a745 0%, #218838 100%);
+    margin-bottom: 30px;  /* Improved spacing */
 }
 
 .book-meeting-button:hover {
@@ -221,6 +222,7 @@ body {
     font-size: 13px;
     color: #adb5bd;
     opacity: 0.8;
+    margin-top: 30px;  /* Improved spacing above footer */
 }
 
 /* Responsive design */
@@ -229,24 +231,14 @@ body {
         padding: 30px;
     }
 
-    .profile-image {
-        width: 110px;
-        height: 110px;
+    .book-meeting-button {
+        margin-bottom: 25px;  /* Slightly reduced spacing for smaller screens */
     }
 
-    .name {
-        font-size: 26px;
+    .footer-text {
+        margin-top: 25px;  /* Consistent spacing for smaller screens */
     }
-
-    .bio {
-        font-size: 14px;
-    }
-
-    .subscribe-button,
-    .ml-embedded button.primary {
-        padding: 12px 20px;
-        font-size: 14px;
-    }
+}
 
     .ml-embedded input[type="email"] {
         padding: 12px;
