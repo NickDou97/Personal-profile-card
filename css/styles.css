@@ -58,28 +58,8 @@ body {
     margin-bottom: 20px;
 }
 
-/* Newsletter form styling */
-.newsletter-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.newsletter-form input[type="email"] {
-    flex: 1;
-    padding: 12px;
-    font-size: 14px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.newsletter-form input[type="email"]:focus {
-    border-color: #007bff;
-}
-
-.newsletter-form button {
+/* Subscribe button styling */
+.subscribe-button {
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 500;
@@ -89,10 +69,114 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
-.newsletter-form button:hover {
+.subscribe-button:hover {
     background-color: #0056b3;
+}
+
+/* Newsletter form container (hidden by default, shown on click) */
+#ml-form-container {
+    display: none; /* Hidden until triggered */
+}
+
+#ml-form-container.active {
+    display: block;
+}
+
+/* Override MailerLite injected styles */
+.ml-embedded .ml-form-embedContainer {
+    width: 100%;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.ml-embedded .ml-form-embedWrapper {
+    padding: 0 !important;
+}
+
+.ml-embedded .ml-form-embedBody {
+    padding: 0 !important;
+}
+
+.ml-embedded .ml-form-embedContent,
+.ml-embedded .ml-form-successContent {
+    display: none; /* Hide default content since bio serves this purpose */
+}
+
+.ml-embedded .ml-block-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.ml-embedded .ml-form-fieldRow {
+    margin: 0;
+    width: 100%;
+}
+
+.ml-embedded .ml-field-group {
+    width: 100%;
+}
+
+.ml-embedded input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.ml-embedded input[type="email"]:focus {
+    border-color: #007bff;
+}
+
+.ml-embedded .ml-form-embedSubmit {
+    margin: 0;
+    width: 100%;
+}
+
+.ml-embedded button.primary {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.ml-embedded button.primary:hover {
+    background-color: #0056b3;
+}
+
+.ml-embedded .ml-form-successBody {
+    padding: 20px 0;
+}
+
+.ml-embedded .ml-form-successContent h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3436;
+    margin-bottom: 10px;
+}
+
+.ml-embedded .ml-form-successContent p {
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.6;
 }
 
 /* Social icons styling */
@@ -126,12 +210,12 @@ body {
         padding: 20px;
     }
 
-    .newsletter-form {
+    .ml-embedded .ml-block-form {
         flex-direction: column;
     }
 
-    .newsletter-form input[type="email"],
-    .newsletter-form button {
+    .ml-embedded input[type="email"],
+    .ml-embedded button.primary {
         width: 100%;
     }
 }
