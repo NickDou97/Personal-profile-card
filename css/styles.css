@@ -8,8 +8,13 @@ body {
     min-height: 100vh;
 }
 
-header {
+.profile-card {
     text-align: center;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .profile-image {
@@ -24,15 +29,10 @@ header {
     margin: 10px 0;
 }
 
-.introduction {
-    max-width: 600px;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.introduction p {
-    font-size: 18px;
+.bio {
+    font-size: 16px;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 .newsletter-signup {
@@ -41,10 +41,11 @@ header {
 
 .newsletter-signup input[type="email"] {
     padding: 10px;
-    width: 250px;
+    width: 200px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-right: 10px;
 }
 
 .newsletter-signup button {
@@ -61,13 +62,8 @@ header {
     background-color: #0056b3;
 }
 
-footer {
-    margin-top: 20px;
-    text-align: center;
-}
-
 .social-icons {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 .social-icon {
@@ -77,9 +73,10 @@ footer {
     text-decoration: none;
 }
 
-footer p {
+.footer-text {
     font-size: 14px;
     color: #666;
+    margin-top: 20px;
 }
 
 @media (max-width: 600px) {
