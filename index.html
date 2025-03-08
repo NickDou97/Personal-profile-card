@@ -18,15 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- MailerLite Universal -->
-    <script src="https://assets.mailerlite.com/js/universal.js" async></script>
-    <script>
-        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-        ml('account', '1375191');
-    </script>
-    <!-- End MailerLite Universal -->
 </head>
 <body>
     <div class="gradient-bg">
@@ -320,7 +311,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial">
+                    <div class="testimonial" style="display: none;">
                         <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
                         </div>
@@ -371,10 +362,13 @@
                         </ul>
                     </div>
                     <div class="newsletter-form">
-                        <button class="ml-onclick-form newsletter-button" onclick="showForm()" id="newsletter-button">
-                            <i class="far fa-envelope"></i> Subscribe to AI Insights
-                        </button>
-                        <div id="form-loading" class="form-loading-indicator hidden">Loading form...</div>
+                        <!-- Simple email signup form as fallback -->
+                        <form class="signup-form" action="#" method="post">
+                            <input type="email" name="email" placeholder="Your email address" required>
+                            <button type="submit" class="newsletter-button">
+                                <i class="far fa-envelope"></i> Subscribe to AI Insights
+                            </button>
+                        </form>
                         <p class="newsletter-guarantee">No spam, ever. Unsubscribe anytime.</p>
                     </div>
                 </div>
@@ -476,19 +470,6 @@
             // Neural Network Animation
             createNeuralNetworkAnimation();
             
-            // Check if MailerLite is loaded
-            const checkMLLoaded = setInterval(() => {
-                if (typeof ml === 'function') {
-                    clearInterval(checkMLLoaded);
-                    console.log('MailerLite script loaded successfully');
-                    
-                    // Pre-load the form
-                    setTimeout(() => {
-                        ml('embedEmbed', { embedId: 'AbvDrk', container: '.ml-form-embedContainer' });
-                    }, 500);
-                }
-            }, 300);
-            
             // Simple testimonial slider functionality
             const dots = document.querySelectorAll('.dot');
             const testimonials = document.querySelectorAll('.testimonial');
@@ -510,17 +491,30 @@
                     dot.classList.add('active');
                 });
             });
+            
+            // Basic form submission prevention (replace with your actual form handling)
+            const signupForm = document.querySelector('.signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert('Thank you for subscribing with: ' + email + '\nIn a production environment, this would connect to your email service provider.');
+                    this.reset();
+                });
+            }
         });
         
         // Neural Network Animation
         function createNeuralNetworkAnimation() {
             const container = document.getElementById('neural-network');
+            if (!container) return;
+            
             const width = container.clientWidth;
             const height = container.clientHeight;
-            const nodeCount = 40;
+            const nodeCount = Math.min(40, Math.floor(width * height / 10000)); // Responsive node count
             const nodes = [];
             const connections = [];
-            const connectionDistance = 150;
+            const connectionDistance = Math.min(150, width * 0.15); // Responsive connection distance
             
             // Create nodes
             for (let i = 0; i < nodeCount; i++) {
@@ -547,9 +541,12 @@
                 });
             }
             
-            // Create connections
-            for (let i = 0; i < nodeCount; i++) {
-                for (let j = i + 1; j < nodeCount; j++) {
+            // Create connections (limit based on device performance)
+            const maxConnections = Math.min(nodeCount * nodeCount * 0.3, 200);
+            let connectionCount = 0;
+            
+            for (let i = 0; i < nodeCount && connectionCount < maxConnections; i++) {
+                for (let j = i + 1; j < nodeCount && connectionCount < maxConnections; j++) {
                     const connection = document.createElement('div');
                     connection.className = 'neural-connection';
                     container.appendChild(connection);
@@ -559,11 +556,24 @@
                         from: nodes[i],
                         to: nodes[j]
                     });
+                    
+                    connectionCount++;
                 }
             }
             
-            // Animation loop
-            function animate() {
+            // Animation loop with performance optimization
+            let animationFrameId;
+            let lastTimestamp = 0;
+            const fps = 30;
+            const interval = 1000 / fps;
+            
+            function animate(timestamp) {
+                animationFrameId = requestAnimationFrame(animate);
+                
+                // Throttle to desired fps
+                if (timestamp - lastTimestamp < interval) return;
+                lastTimestamp = timestamp;
+                
                 // Update node positions
                 nodes.forEach(node => {
                     node.x += node.speedX;
@@ -602,34 +612,19 @@
                         conn.element.style.display = 'none';
                     }
                 });
-                
-                requestAnimationFrame(animate);
             }
             
-            animate();
-        }
-        
-        function showForm() {
-            const loadingIndicator = document.getElementById('form-loading');
-            const button = document.getElementById('newsletter-button');
+            // Start animation
+            animate(0);
             
-            loadingIndicator.classList.remove('hidden');
-            button.classList.add('loading');
-            
-            if (typeof ml === 'function') {
-                ml('show', 'AbvDrk', true);
-                setTimeout(() => {
-                    loadingIndicator.classList.add('hidden');
-                    button.classList.remove('loading');
-                }, 1000);
-            } else {
-                console.error('MailerLite script not loaded - ml function is not defined');
-                loadingIndicator.textContent = 'Please try again in a moment';
-                setTimeout(() => {
-                    loadingIndicator.classList.add('hidden');
-                    button.classList.remove('loading');
-                }, 3000);
-            }
+            // Cleanup on page visibility change to save resources
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationFrameId);
+                } else {
+                    animate(0);
+                }
+            });
         }
     </script>
 </body>
