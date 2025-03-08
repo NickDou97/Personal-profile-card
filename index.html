@@ -35,8 +35,13 @@
     </div>
     <script>
         function showForm() {
-            ml('showForm', 'yASlPr'); // Trigger the form
-            document.getElementById('ml-form-container').classList.add('active');
+            if (typeof ml === 'function') {
+                console.log('Showing form with ID: yASlPr');
+                ml('showForm', 'yASlPr');
+                document.getElementById('ml-form-container').classList.add('active');
+            } else {
+                console.error('MailerLite script not loaded');
+            }
         }
     </script>
 </body>
