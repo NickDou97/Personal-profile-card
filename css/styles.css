@@ -108,4 +108,149 @@ body {
     padding: 0 !important;
 }
 
-.ml-embedded .ml-form-
+.ml-embedded .ml-form-embedBody {
+    padding: 0 !important;
+}
+
+.ml-embedded .ml-form-embedContent,
+.ml-embedded .ml-form-successContent {
+    display: none; /* Hide default content since bio serves this purpose */
+}
+
+.ml-embedded .ml-block-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.ml-embedded .ml-form-fieldRow {
+    margin: 0;
+    width: 100%;
+}
+
+.ml-embedded .ml-field-group {
+    width: 100%;
+}
+
+.ml-embedded input[type="email"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333333;
+}
+
+.ml-embedded input[type="email"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.ml-embedded .ml-form-embedSubmit {
+    margin: 0;
+    width: 100%;
+}
+
+.ml-embedded button.primary {
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.ml-embedded button.primary:hover {
+    background: linear-gradient(90deg, #0056b3 0%, #003d82 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.ml-embedded .ml-form-successBody {
+    padding: 20px 0;
+}
+
+.ml-embedded .ml-form-successContent h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a2526;
+    margin-bottom: 10px;
+}
+
+.ml-embedded .ml-form-successContent p {
+    font-size: 15px;
+    color: #5f6c72;
+    line-height: 1.7;
+}
+
+/* Social icons with a smoother hover effect */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.social-icon {
+    color: #5f6c72;
+    font-size: 22px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
+
+/* Footer text with a lighter tone */
+.footer-text {
+    font-size: 13px;
+    color: #adb5bd;
+    opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .profile-card {
+        padding: 30px;
+    }
+
+    .profile-image {
+        width: 110px;
+        height: 110px;
+    }
+
+    .name {
+        font-size: 26px;
+    }
+
+    .bio {
+        font-size: 14px;
+    }
+
+    .subscribe-button,
+    .ml-embedded button.primary {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .ml-embedded input[type="email"] {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .social-icon {
+        font-size: 20px;
+    }
+}
