@@ -1,90 +1,137 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset default styles */
+* {
     margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling with a subtle gradient background */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
-}
-
-.profile-card {
-    text-align: center;
-    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Profile card with a modern look */
+.profile-card {
+    background: #ffffff;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Profile image styling */
 .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #e9ecef;
+}
+
+/* Name styling */
+.name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2d3436;
     margin-bottom: 10px;
 }
 
-.name {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
+/* Bio styling */
 .bio {
     font-size: 16px;
-    line-height: 1.5;
+    color: #6c757d;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.newsletter-signup {
-    margin: 20px 0;
+/* Newsletter form styling */
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.newsletter-signup input[type="email"] {
-    padding: 10px;
-    width: 200px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
-.newsletter-signup button {
-    padding: 10px 20px;
-    font-size: 16px;
+.newsletter-form input[type="email"]:focus {
+    border-color: #007bff;
+}
+
+.newsletter-form button {
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
     background-color: #007bff;
-    color: white;
+    color: #ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.newsletter-signup button:hover {
+.newsletter-form button:hover {
     background-color: #0056b3;
 }
 
+/* Social icons styling */
 .social-icons {
-    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .social-icon {
-    color: #333;
+    color: #6c757d;
     font-size: 20px;
-    margin: 0 10px;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* Footer text styling */
 .footer-text {
-    font-size: 14px;
-    color: #666;
-    margin-top: 20px;
+    font-size: 12px;
+    color: #adb5bd;
 }
 
+/* Responsive design */
 @media (max-width: 600px) {
-    .newsletter-signup input[type="email"] {
-        width: 100%;
-        margin-bottom: 10px;
+    .profile-card {
+        padding: 20px;
     }
-    .newsletter-signup button {
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form button {
         width: 100%;
     }
 }
