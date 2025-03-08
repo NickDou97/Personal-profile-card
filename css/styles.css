@@ -67,6 +67,7 @@ body {
 
 /* Subscribe button with a modern gradient and shadow */
 .subscribe-button {
+    display: inline-block;
     padding: 14px 28px;
     font-size: 15px;
     font-weight: 600;
@@ -77,8 +78,10 @@ body {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* Increased for better spacing */
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    text-decoration: none;
+    z-index: 10;
 }
 
 .subscribe-button:hover {
@@ -87,13 +90,13 @@ body {
     box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
-/* Newsletter form container (hidden by default, shown on click) */
-#ml-form-container {
-    display: none; /* Kept for reference, but not used with ml-onclick-form */
+/* Specific styling for the book meeting button */
+.book-meeting-button {
+    background: linear-gradient(90deg, #28a745 0%, #218838 100%);
 }
 
-#ml-form-container.active {
-    display: block;
+.book-meeting-button:hover {
+    background: linear-gradient(90deg, #218838 0%, #1e7e34 100%);
 }
 
 /* Override MailerLite injected styles (for when the form loads) */
