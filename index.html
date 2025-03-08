@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick Dou | AI Consulting</title>
+    <meta name="description" content="AI consulting services to help businesses implement effective AI strategies and solutions">
+    <meta property="og:title" content="Nick Dou | AI Strategy Consultant">
+    <meta property="og:description" content="AI consulting services to help businesses implement effective AI strategies and solutions">
+    <meta property="og:type" content="website">
+    
+    <title>Nick Dou | AI Strategy Consultant</title>
+    
+    <!-- Preconnect to CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- MailerLite Universal -->
     <script src="https://assets.mailerlite.com/js/universal.js" async></script>
     <script>
@@ -18,27 +30,86 @@
 </head>
 <body>
     <div class="profile-card">
-        <img src="img/profile.jpg" alt="Nick Dou - AI Consultant" class="profile-image">
+        <img src="img/profile.jpg" alt="Nick Dou - AI Strategy Consultant" class="profile-image">
         <h1 class="name">Nick Dou</h1>
+        <p class="tagline">AI Strategy Consultant</p>
         <p class="bio">
-            I help businesses thrive with AI. Get exclusive insights on AI trends, tools, and strategies to boost your growth—join my newsletter today!
+            I help businesses implement AI solutions that increase efficiency by 30%+. Specializing in LLM integration, workflow automation, and AI-powered customer experiences.
         </p>
-        <button class="ml-onclick-form subscribe-button" onclick="showForm()">Join My AI Newsletter</button>
-        <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="subscribe-button book-meeting-button">Book a Meeting</a>
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        
+        <div class="cta-container">
+            <button class="ml-onclick-form primary-button" onclick="showForm()" id="newsletter-button">
+                <i class="far fa-envelope"></i> Get Weekly AI Insights
+            </button>
+            <div id="form-loading" class="form-loading-indicator hidden">Loading form...</div>
+            
+            <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="secondary-button">
+                <i class="far fa-calendar-check"></i> Book a Strategy Call
+            </a>
         </div>
+        
+        <div class="credentials">
+            <div class="credential-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Certified AI Developer</span>
+            </div>
+            <div class="credential-item">
+                <i class="fas fa-briefcase"></i>
+                <span>10+ Enterprise AI Projects</span>
+            </div>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter Profile">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+        
         <p class="footer-text">© 2025 Nick Dou AI Consulting</p>
     </div>
+    
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if MailerLite is loaded
+            const checkMLLoaded = setInterval(() => {
+                if (typeof ml === 'function') {
+                    clearInterval(checkMLLoaded);
+                    console.log('MailerLite script loaded successfully');
+                    
+                    // Pre-load the form
+                    setTimeout(() => {
+                        ml('embedEmbed', { embedId: 'AbvDrk', container: '.ml-form-embedContainer' });
+                    }, 500);
+                }
+            }, 300);
+        });
+        
         function showForm() {
-            console.log('Newsletter button clicked - attempting to show form with ID: AbvDrk');
+            const loadingIndicator = document.getElementById('form-loading');
+            const button = document.getElementById('newsletter-button');
+            
+            loadingIndicator.classList.remove('hidden');
+            button.classList.add('loading');
+            
             if (typeof ml === 'function') {
                 ml('show', 'AbvDrk', true);
+                setTimeout(() => {
+                    loadingIndicator.classList.add('hidden');
+                    button.classList.remove('loading');
+                }, 1000);
             } else {
                 console.error('MailerLite script not loaded - ml function is not defined');
+                loadingIndicator.textContent = 'Please try again in a moment';
+                setTimeout(() => {
+                    loadingIndicator.classList.add('hidden');
+                    button.classList.remove('loading');
+                }, 3000);
             }
         }
     </script>
