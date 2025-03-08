@@ -22,7 +22,7 @@
         <p class="bio">
             I help businesses thrive with AI. Get exclusive insights on AI trends, tools, and strategies to boost your growth—join my newsletter today!
         </p>
-        <button class="ml-onclick-form subscribe-button" onclick="ml('show', 'AbvDrk', true)">Join My AI Newsletter</button>
+        <button class="ml-onclick-form subscribe-button" onclick="showForm()">Join My AI Newsletter</button>
         <div class="social-icons">
             <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
@@ -31,7 +31,14 @@
         <p class="footer-text">© 2025 Nick Dou AI Consulting</p>
     </div>
     <script>
-        // No additional JavaScript needed since the onclick handles the form display
+        function showForm() {
+            console.log('Button clicked - attempting to show form with ID: AbvDrk');
+            if (typeof ml === 'function') {
+                ml('show', 'AbvDrk', true);
+            } else {
+                console.error('MailerLite script not loaded - ml function is not defined');
+            }
+        }
     </script>
 </body>
 </html>
