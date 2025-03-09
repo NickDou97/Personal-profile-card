@@ -329,3 +329,46 @@ function createNeuralNetworkAnimation() {
         }
     });
 }
+
+// Add this to your existing JavaScript file or include as a new script
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize fade-in effect for the new content section
+    initFadeInEffect();
+});
+
+// Fade-in animation for content 
+function initFadeInEffect() {
+    const fadeItems = document.querySelectorAll('.fade-in-item');
+    
+    if (fadeItems.length) {
+        // Create IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If element is in viewport
+                if (entry.isIntersecting) {
+                    // Calculate delay based on order of appearance
+                    const index = Array.from(fadeItems).indexOf(entry.target);
+                    const delay = index * 150; // 150ms incremental delay between items
+                    
+                    // Apply delay and add visible class
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    
+                    // Stop observing after animation
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null, // viewport
+            threshold: 0.1, // trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // slightly before scrolling into full view
+        });
+        
+        // Start observing each item
+        fadeItems.forEach(item => {
+            observer.observe(item);
+        });
+    }
+}
