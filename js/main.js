@@ -337,6 +337,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initFadeInEffect();
 });
 
+// Add this after all the other functions, just before the end of the file
+
 // Fade-in animation for content 
 function initFadeInEffect() {
     const fadeItems = document.querySelectorAll('.fade-in-item');
