@@ -590,3 +590,95 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Outbound Challenges Section Styles */
+.outbound-challenges {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.direct-message h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.reality-section, 
+.opportunity-section,
+.results-section {
+    margin-top: 2rem;
+}
+
+.reality-section h4,
+.opportunity-section h4,
+.results-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.challenges-list,
+.results-list {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenges-list li,
+.results-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
+    list-style-type: none;
+}
+
+.challenges-list li:before,
+.results-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.direct-message p:last-child {
+    font-style: italic;
+    color: var(--text-medium);
+    margin-top: 0.5rem;
+}
+
+/* Fade-in Animation */
+.fade-in-content {
+    opacity: 1;
+}
+
+.fade-in-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .outbound-challenges {
+        padding: 1.5rem;
+    }
+    
+    .direct-message h3 {
+        font-size: 1.5rem;
+    }
+    
+    .reality-section h4,
+    .opportunity-section h4,
+    .results-section h4 {
+        font-size: 1.3rem;
+    }
+}
