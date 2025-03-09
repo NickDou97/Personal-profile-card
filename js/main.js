@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations
     initScrollAnimations();
     
+    // Initialize fade-in effect for the new content section
+    initFadeInEffect();
+    
     // Initialize typing effect if element exists
     if (document.querySelector('.typing-text')) {
         initTypingEffect(document.querySelector('.typing-text'), ['marketing teams', 'sales teams', 'CX teams', 'customer support']);
