@@ -1,0 +1,208 @@
+/* Professional Monochrome Color Scheme */
+:root {
+    /* Primary Colors */
+    --primary-color: #2d3748;
+    --primary-dark: #1a202c;
+    --primary-light: #e2e8f0;
+    
+    /* Secondary Colors */
+    --secondary-color: #4a5568;
+    --secondary-dark: #2d3748;
+    --secondary-light: #edf2f7;
+    
+    /* Accent Colors */
+    --accent-color: #3182ce;
+    --accent-dark: #2c5282;
+    --accent-light: #ebf8ff;
+    
+    /* Success Color */
+    --success-color: #68d391;
+    
+    /* Text Colors */
+    --text-dark: #1a202c;
+    --text-medium: #4a5568;
+    --text-light: #718096;
+    
+    /* Background Colors */
+    --background-white: #ffffff;
+    --background-light: #f7fafc;
+    --background-blue: #f0f9ff;
+    --background-gray: #edf2f7;
+    
+    /* Border Colors */
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+    --gradient-text: linear-gradient(90deg, var(--text-dark), var(--secondary-color));
+    --gradient-text-alt: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    --glass-effect: rgba(255, 255, 255, 0.1);
+}
+
+/* Text Highlight Effect */
+.highlight-text {
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(49, 130, 206, 0.2);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s ease;
+}
+
+.highlight-text.active::after {
+    transform: scaleX(1);
+}
+
+/* Text Reveal Effect */
+.reveal-text {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-text span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.reveal-text.active span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Clarity Effect */
+.clarity-text {
+    position: relative;
+    display: inline-block;
+    filter: blur(4px);
+    opacity: 0.7;
+    transition: filter 1s ease, opacity 1s ease;
+}
+
+.clarity-text.active {
+    filter: blur(0);
+    opacity: 1;
+}
+
+/* Typing Effect Container */
+.typing-container {
+    display: inline-block;
+    border-right: 2px solid var(--accent-color);
+    padding-right: 5px;
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color) }
+}
+
+/* Glass Card Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Neural Animation Modifications */
+.neural-node {
+    background-color: var(--primary-color);
+    opacity: 0.3;
+}
+
+.neural-connection {
+    background-color: var(--primary-color);
+    opacity: 0.15;
+}
+
+/* Challenge Section Animation */
+.challenge-section {
+    overflow: hidden;
+}
+
+.challenge-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.challenge-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.challenge-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.challenge-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.challenge-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.challenge-card:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+/* Gradient Background Update */
+.gradient-bg {
+    background: linear-gradient(135deg, rgba(247, 250, 252, 0.95) 0%, rgba(237, 242, 247, 0.95) 100%);
+}
+
+/* Hero Visual Updates */
+.blob-shape {
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2));
+}
+
+/* Newsletter Section Updates */
+.newsletter {
+    background-color: var(--primary-dark);
+}
+
+.blob-1 {
+    background-color: rgba(74, 85, 104, 0.2);
+}
+
+.blob-2 {
+    background-color: rgba(49, 130, 206, 0.15);
+}
+
+/* Contact Button Updates */
+.contact-button {
+    background: var(--gradient-accent);
+}
+
+.contact-button:hover {
+    box-shadow: 0 12px 25px rgba(49, 130, 206, 0.3);
+}
+
+/* Scroll Observer for Animations */
+.scroll-observe {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-observe.active {
+    opacity: 1;
+    transform: translateY(0);
+}
