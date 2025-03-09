@@ -33,6 +33,12 @@
     --border-light: #e2e8f0;
     --border-medium: #cbd5e1;
     
+    /* Shadow */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
@@ -40,6 +46,134 @@
     --gradient-text: linear-gradient(90deg, var(--text-dark), var(--secondary-color));
     --gradient-text-alt: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
     --glass-effect: rgba(255, 255, 255, 0.1);
+    
+    /* Other */
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 30px;
+    --max-width: 1200px;
+    --content-padding: 5% 7%;
+    --header-height: 80px;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Gradient Background Update */
+.gradient-bg {
+    background: linear-gradient(135deg, rgba(247, 250, 252, 0.95) 0%, rgba(237, 242, 247, 0.95) 100%);
+}
+
+/* Navigation Updates */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+}
+
+.logo span {
+    color: var(--text-dark);
+}
+
+.logo .highlight {
+    color: var(--primary-color);
+}
+
+.nav-links a {
+    color: var(--text-medium);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a::after {
+    background-color: var(--primary-color);
+}
+
+.nav-cta {
+    background: var(--gradient-primary);
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+.nav-cta:hover {
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+}
+
+.mobile-menu-btn span {
+    background-color: var(--text-dark);
+}
+
+/* Hero Section Updates */
+.badge {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+}
+
+.hero-subtitle {
+    color: var(--text-medium);
+}
+
+.primary-button {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.25);
+}
+
+.primary-button:hover {
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+}
+
+.secondary-button:hover {
+    background: var(--background-white);
+    box-shadow: var(--shadow-lg);
+}
+
+.proof-number {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.proof-text {
+    color: var(--text-medium);
+}
+
+.divider {
+    background-color: var(--border-medium);
+}
+
+.profile-image {
+    box-shadow: var(--shadow-lg);
+}
+
+.blob-shape {
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2));
+}
+
+/* Client Section Updates */
+.client-banner {
+    background-color: var(--background-light);
+    box-shadow: var(--shadow-md);
+}
+
+.client-logo {
+    color: var(--text-dark);
+}
+
+.client-logo i {
+    color: var(--primary-color);
 }
 
 /* Text Highlight Effect */
@@ -163,19 +297,144 @@
     transition-delay: 0.6s;
 }
 
-/* Gradient Background Update */
-.gradient-bg {
-    background: linear-gradient(135deg, rgba(247, 250, 252, 0.95) 0%, rgba(237, 242, 247, 0.95) 100%);
+/* Problem Card Updates */
+.problem-card {
+    background-color: var(--background-light);
 }
 
-/* Hero Visual Updates */
-.blob-shape {
-    background: linear-gradient(135deg, rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2));
+.card-accent {
+    background: var(--gradient-primary);
+}
+
+.problem-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.problem-icon {
+    color: var(--primary-color);
+}
+
+/* Section Tag Updates */
+.section-tag {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.section-tag.light {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Service Card Updates */
+.service-card {
+    background-color: var(--background-white);
+    border: 1px solid var(--border-light);
+}
+
+.service-card.featured {
+    border: 2px solid var(--primary-color);
+}
+
+.card-design-element {
+    background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), transparent);
+}
+
+.popular-tag {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.service-icon {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.service-features li:before {
+    color: var(--success-color);
+}
+
+.service-cta {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.service-cta:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.angled-divider {
+    background-color: var(--background-white);
+}
+
+/* Process Section Updates */
+.process-timeline:before {
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.step-number {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.step-content {
+    background-color: var(--background-light);
+    box-shadow: var(--shadow-md);
+}
+
+.step-icon {
+    color: var(--primary-color);
+}
+
+/* Testimonials Updates */
+.testimonials {
+    background-color: var(--background-blue);
+}
+
+.testimonials:before {
+    background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, transparent 70%);
+}
+
+.testimonial {
+    background-color: var(--background-white);
+    box-shadow: var(--shadow-lg);
+}
+
+.testimonial-quote {
+    color: var(--primary-color);
+}
+
+.testimonial-content {
+    color: var(--text-medium);
+}
+
+.author-avatar {
+    background-color: var(--primary-light);
+}
+
+.avatar-placeholder {
+    color: var(--primary-color);
+}
+
+.author-info p {
+    color: var(--text-light);
+}
+
+.dot {
+    background-color: var(--border-light);
+}
+
+.dot.active {
+    background-color: var(--primary-color);
 }
 
 /* Newsletter Section Updates */
 .newsletter {
     background-color: var(--primary-dark);
+    color: white;
 }
 
 .blob-1 {
@@ -186,13 +445,138 @@
     background-color: rgba(49, 130, 206, 0.15);
 }
 
-/* Contact Button Updates */
+.newsletter-container {
+    background-color: rgba(67, 97, 238, 0.2);
+}
+
+.newsletter-content h2 {
+    color: white;
+}
+
+.newsletter-content p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.newsletter-benefits li {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-benefits i {
+    color: var(--accent-color);
+}
+
+.signup-form input[type="email"] {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.signup-form input[type="email"]:focus {
+    border-color: white;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.signup-form input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-button {
+    background-color: white;
+    color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-button:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-light);
+}
+
+.newsletter-guarantee {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Contact Section Updates */
+.contact-container {
+    background-color: var(--background-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-icon {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
 .contact-button {
     background: var(--gradient-accent);
+    color: white;
+    box-shadow: 0 8px 20px rgba(49, 130, 206, 0.2);
 }
 
 .contact-button:hover {
     box-shadow: 0 12px 25px rgba(49, 130, 206, 0.3);
+}
+
+.contact-guarantee {
+    color: var(--text-light);
+}
+
+/* Footer Updates */
+footer {
+    background-color: var(--text-dark);
+    color: white;
+}
+
+.footer-logo span {
+    color: white;
+}
+
+.footer-logo p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-section h4 {
+    color: white;
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.social-icon {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.footer-copyright {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+/* Form Success Message */
+.form-success {
+    background-color: rgba(104, 211, 145, 0.1);
+    color: var(--success-color);
+}
+
+.form-success i {
+    color: var(--success-color);
 }
 
 /* Scroll Observer for Animations */
