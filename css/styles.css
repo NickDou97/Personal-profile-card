@@ -722,7 +722,7 @@ a {
 
 .popular-tag {
     position: absolute;
-    top: -12px;
+    top: 21px;
     right: 20px;
     background: var(--gradient-primary);
     color: white;
