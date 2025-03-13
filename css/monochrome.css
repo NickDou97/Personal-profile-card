@@ -682,3 +682,29 @@ footer {
         font-size: 1.3rem;
     }
 }
+
+/* Add these CSS classes to monochrome.css */
+
+/* Missing gradient-text CSS class */
+.gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Missing gradient-text-alt CSS class */
+.gradient-text-alt {
+    background: var(--gradient-text-alt);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Additional styles for the fade-in animation */
+.fade-in-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
