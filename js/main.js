@@ -1,4 +1,45 @@
-// Setup Animation Toggle
+// Setup Counter Animations
+function setupCounterAnimations() {
+    const counters = document.querySelectorAll('.counter');
+    
+    // Function to animate counter
+    function animateCounter(counter) {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const stepTime = 50; // update every 50ms
+        const totalSteps = duration / stepTime;
+        const stepValue = target / totalSteps;
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += stepValue;
+            if (current > target) {
+                counter.textContent = target;
+                return;
+            }
+            counter.textContent = Math.floor(current);
+            setTimeout(updateCounter, stepTime);
+        };
+        
+        updateCounter();
+    }
+    
+    // Setup Intersection Observer to trigger counter when visible
+    if (counters.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    }
+}// Setup Animation Toggle
 function setupAnimationToggle() {
     const toggleBtn = document.getElementById('toggle-animation');
     const neuralNetwork = document.getElementById('neural-network');
@@ -61,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup animation toggle
     setupAnimationToggle();
+    
+    // Setup counter animations
+    setupCounterAnimations();
 });
 
 // Mobile Menu Setup
