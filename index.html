@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clarity AI helps businesses develop and implement agentic AI solutions for marketing, sales and customer experience teams">
-    <meta property="og:title" content="Clarity AI | Agentic AI R&D Consulting">
-    <meta property="og:description" content="Expert consulting for developing and implementing agentic AI workflows for marketing, sales, and CX teams">
+    <meta name="description" content="Clarity AI offers premium prompt packs and solutions for sales, marketing, and customer support teams to leverage the power of agentic AI">
+    <meta property="og:title" content="Clarity AI | Premium Agentic AI Solutions">
+    <meta property="og:description" content="Premium prompt packs and tools to enhance your sales, marketing, and CX workflows with agentic AI">
     <meta property="og:type" content="website">
     
-    <title>Clarity AI | Agentic AI R&D Consulting</title>
+    <title>Clarity AI | Premium Agentic AI Solutions</title>
     
     <!-- Preconnect to CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
+    <!-- Fonts and stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Load base styles first, then theme styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/monochrome.css">
+    <link rel="stylesheet" href="css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -28,261 +29,331 @@
     
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <span>Clarity<span class="highlight">AI</span></span>
-            </div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#process">Process</a>
-                <a href="#testimonials">Results</a>
-                <a href="#newsletter">Insights</a>
-            </div>
-            <a href="#contact" class="nav-cta">Get Started</a>
-            <div class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="header-container">
+                <div class="logo">
+                    <span>Clarity<span class="highlight">AI</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#products">Prompt Packs</a>
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Results</a>
+                    <a href="#faqs">FAQs</a>
+                </div>
+                <a href="#contact" class="nav-cta">Get Started</a>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="badge">Agentic AI R&D Consulting</div>
-                    <h1>Bringing <span class="clarity-text">Clarity</span> to Your AI <span class="highlight-text">Workflows</span></h1>
-                    <p class="hero-subtitle">We help forward-thinking businesses develop and implement agentic AI solutions for <span class="typing-container typing-text">marketing teams</span></p>
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <div class="badge">Premium Agentic AI Solutions</div>
+                    <h1 class="hero-headline">Unlock the Power of <span class="gradient-text">AI Agents</span> for Your Business</h1>
+                    <p class="hero-subheadline">Our carefully crafted prompt packs help sales, marketing, and support teams leverage the full potential of agentic AI to revolutionize customer experiences.</p>
                     <div class="hero-buttons">
-                        <a href="#contact" class="primary-button">
-                            <span class="button-text">Schedule Free Strategy Call</span>
+                        <a href="#products" class="primary-button">
+                            <span class="button-text">Explore Prompt Packs</span>
                             <span class="button-icon"><i class="fas fa-arrow-right"></i></span>
                         </a>
-                        <a href="#services" class="secondary-button">Explore Solutions</a>
-                    </div>
-                    <div class="hero-social-proof">
-                        <div class="proof-item">
-                            <span class="proof-number">25+</span>
-                            <span class="proof-text">Agentic AI Implementations</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="proof-item">
-                            <span class="proof-number">40%+</span>
-                            <span class="proof-text">Avg. Efficiency Gains</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="proof-item">
-                            <span class="proof-number">3.5x</span>
-                            <span class="proof-text">ROI for Clients</span>
-                        </div>
+                        <a href="#contact" class="secondary-button">Schedule Demo</a>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="hero-image">
-                        <div class="floating-elements">
-                            <div class="float-element ai-brain">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="float-element ai-chart">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="float-element ai-cog">
-                                <i class="fas fa-cog"></i>
-                            </div>
-                            <div class="float-element ai-lightbulb">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                        </div>
-                        <div class="image-wrapper">
-                            <img src="img/profile.jpg" alt="Clarity AI Founder" class="profile-image">
-                        </div>
-                        <div class="blob-shape"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="wave-divider">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
-                    <path fill="#ffffff" fill-opacity="1" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,53.3C840,53,960,43,1080,37.3C1200,32,1320,32,1380,32L1440,32L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
-                </svg>
-            </div>
-        </section>
-
-        <!-- Clients Section -->
-        <section class="clients">
-            <div class="container">
-                <div class="client-banner glass-card">
-                    <p>Trusted by innovative companies across industries</p>
-                    <div class="client-logos">
-                        <div class="client-logo">
-                            <i class="fas fa-building"></i> 
-                            <span>TechCorp</span>
-                        </div>
-                        <div class="client-logo">
-                            <i class="fas fa-hospital"></i>
-                            <span>HealthNet</span>
-                        </div>
-                        <div class="client-logo">
-                            <i class="fas fa-university"></i>
-                            <span>FinSolutions</span>
-                        </div>
-                        <div class="client-logo">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span>RetailPro</span>
-                        </div>
-                        <div class="client-logo">
-                            <i class="fas fa-industry"></i>
-                            <span>ManufactureX</span>
-                        </div>
-                    </div>
+                <div class="hero-image">
+                    <img src="img/agentic-ai-dashboard.jpg" alt="Agentic AI Dashboard" class="main-image">
                 </div>
             </div>
         </section>
 
-        <!-- Challenges Section - Animated with New Content -->
-        <section class="challenge-section" id="challenges">
-            <div class="container">
-                <div class="section-intro scroll-observe">
-                    <div class="section-tag">Common Challenges</div>
-                    <h2>Why Agentic AI <span class="gradient-text">Initiatives Fail</span></h2>
-                    <p>Many organizations struggle to implement effective agentic AI solutions for their marketing, sales, and CX workflows.</p>
+        <!-- Products/Prompt Packs Section -->
+        <section class="products-section" id="products">
+            <div class="products-container">
+                <div class="section-heading">
+                    <div class="section-tag">Premium Solutions</div>
+                    <h2 class="section-title">AI-Powered <span class="gradient-text">Prompt Packs</span></h2>
+                    <p class="section-subtitle">Specialized prompt collections designed to transform how your team interacts with customers across every touchpoint</p>
                 </div>
                 
-                <div class="outbound-challenges fade-in-content">
-                    <div class="direct-message">
-                        <h3 class="fade-in-item">Let me be direct: outbound is tougher than ever.</h3>
-                        <p class="fade-in-item">I hear the same story from CX leaders and sales teams alike: They get handed a generic playbook, told to fire off mass emails, and hope for the best. The advice? "Send 100 LinkedIn messages, make 100 dials, and let's build some pipeline!"</p>
-                        <p class="fade-in-item">(Grab some cold brew too while you're at it)</p>
+                <div class="product-grid">
+                    <!-- Sales Prompt Pack -->
+                    <div class="product-card">
+                        <img src="img/sales-prompts.jpg" alt="Sales Prompt Pack" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Sales Acceleration Pack</h3>
+                            <p class="product-description">Transform your sales process with AI-powered conversation guides, objection handlers, and follow-up sequences.</p>
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">150+ advanced sales prompts</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Objection handling frameworks</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Deal closing templates</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Follow-up sequence generator</span>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$297</span>
+                                <span class="old-price">$497</span>
+                            </div>
+                            <a href="#" class="cta-button">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="reality-section">
-                        <h4 class="fade-in-item">But here's the reality in 2025:</h4>
-                        <ul class="challenges-list">
-                            <li class="fade-in-item">Mass email blasting doesn't cut it anymore</li>
-                            <li class="fade-in-item">AI tools are flooding inboxes with generic outreach</li>
-                            <li class="fade-in-item">Buyers are hit with 2-3x more touches than last year</li>
-                            <li class="fade-in-item">Activity metrics have replaced intentional strategy</li>
-                            <li class="fade-in-item">Companies are tracking effort instead of developing skills that truly connect with prospects</li>
-                        </ul>
+                    <!-- Marketing Prompt Pack -->
+                    <div class="product-card">
+                        <img src="img/marketing-prompts.jpg" alt="Marketing Prompt Pack" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Marketing Catalyst Pack</h3>
+                            <p class="product-description">Create compelling content, design multichannel campaigns, and optimize conversion rates with AI assistance.</p>
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">200+ marketing prompt templates</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Content strategy frameworks</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Campaign optimization system</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Conversion copywriting templates</span>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$347</span>
+                                <span class="old-price">$597</span>
+                            </div>
+                            <a href="#" class="cta-button">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="opportunity-section">
-                        <h4 class="fade-in-item">But here's the opportunity — and why I'm excited for CX teams like yours:</h4>
-                        <p class="fade-in-item">The bar has never been lower to break through to your ideal customers.</p>
-                        <p class="fade-in-item">You'll win in 2025 by doing what others avoid: the unscalable methods that take time, creativity, and thoughtful effort — but drive real results.</p>
-                        <p class="fade-in-item">That's why I founded <strong>Clarity AI</strong>.</p>
-                        <p class="fade-in-item">I specialize in developing <strong>Agentic AI solutions</strong> that empower CX teams to scale personalized outreach without sacrificing authenticity.</p>
+                    <!-- Support Prompt Pack -->
+                    <div class="product-card">
+                        <img src="img/support-prompts.jpg" alt="Customer Support Prompt Pack" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Support Excellence Pack</h3>
+                            <p class="product-description">Deliver exceptional customer support with AI-generated responses, resolution workflows, and satisfaction boosters.</p>
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">175+ support interaction prompts</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Escalation handling workflows</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Customer satisfaction boosters</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Issue resolution frameworks</span>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$247</span>
+                                <span class="old-price">$397</span>
+                            </div>
+                            <a href="#" class="cta-button">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="results-section">
-                        <h4 class="fade-in-item">In 2024, these agents helped me:</h4>
-                        <ul class="results-list">
-                            <li class="fade-in-item">Streamline processes that helped me book 2x the calls in one quarter.</li>
-                            <li class="fade-in-item">Prospect thousands of leads and prioritizing only the highest converting accounts.</li>
-                            <li class="fade-in-item">Automate my outreach process and give me more time to focus on side projects.</li>
-                        </ul>
-                        <p class="fade-in-item">This isn't theory — it's a proven system designed to help your CX team build intentional, scalable strategies that actually move the needle.</p>
-                        <p class="fade-in-item">If you're ready to shift from outdated outbound tactics to AI-driven systems that connect with buyers on a human level, let's talk.</p>
+                    <!-- All-in-One Bundle -->
+                    <div class="product-card">
+                        <div class="best-value-tag">BEST VALUE</div>
+                        <img src="img/bundle-prompts.jpg" alt="All-in-One Bundle" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Complete CX Suite</h3>
+                            <p class="product-description">The ultimate collection of all our prompt packs for sales, marketing, and support at a significant discount.</p>
+                            <div class="product-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">500+ comprehensive prompts</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Cross-functional workflow integrations</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">Customer journey optimization</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                    <span class="feature-text">60-minute strategy consultation</span>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$697</span>
+                                <span class="old-price">$1,491</span>
+                            </div>
+                            <a href="#" class="cta-button">
+                                <i class="fas fa-shopping-cart"></i> Buy Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section class="services" id="services">
+        <!-- Features Section -->
+        <section class="services" id="features">
             <div class="container">
                 <div class="section-intro scroll-observe">
-                    <div class="section-tag">Our Solutions</div>
-                    <h2>Agentic AI <span class="gradient-text">R&D Consulting</span></h2>
-                    <p>Expert guidance to develop and implement custom agentic AI workflows for marketing, sales, and customer experience teams</p>
+                    <div class="section-tag">Key Benefits</div>
+                    <h2>Why Our <span class="gradient-text">Prompt Packs</span> Work</h2>
+                    <p>Carefully crafted by AI experts to generate exceptional results for your customer-facing teams</p>
                 </div>
                 <div class="services-container">
                     <div class="service-card scroll-observe">
-                        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h3>Agentic Workflow Design</h3>
-                        <ul class="service-features">
-                            <li>Marketing automation agent design</li>
-                            <li>Sales process automation frameworks</li>
-                            <li>Customer experience agent architectures</li>
-                            <li>Agent-to-agent collaboration systems</li>
-                        </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
-                        <div class="card-design-element"></div>
-                    </div>
-                    <div class="service-card featured scroll-observe">
-                        <div class="popular-tag">Most Popular</div>
-                        <div class="service-icon"><i class="fas fa-rocket"></i></div>
-                        <h3>Custom Agent Development</h3>
-                        <ul class="service-features">
-                            <li>Content creation & optimization agents</li>
-                            <li>Lead qualification & nurturing systems</li>
-                            <li>Customer support automation agents</li>
-                            <li>Personalization & recommendation engines</li>
-                        </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Expertly Engineered</h3>
+                        <p>Developed by AI researchers and CX specialists with thousands of hours of prompt engineering experience.</p>
                         <div class="card-design-element"></div>
                     </div>
                     <div class="service-card scroll-observe">
-                        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3>Implementation & Training</h3>
-                        <ul class="service-features">
-                            <li>Team onboarding & capability building</li>
-                            <li>Agent prompt engineering expertise</li>
-                            <li>Performance monitoring frameworks</li>
-                            <li>Continuous improvement systems</li>
-                        </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Workflow Integrated</h3>
+                        <p>Designed to fit seamlessly into your existing tools and processes without disrupting team productivity.</p>
+                        <div class="card-design-element"></div>
+                    </div>
+                    <div class="service-card scroll-observe">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Results Focused</h3>
+                        <p>Each prompt is tested and optimized for maximum impact on key metrics like conversion rate and satisfaction.</p>
+                        <div class="card-design-element"></div>
+                    </div>
+                    <div class="service-card scroll-observe">
+                        <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Constantly Updated</h3>
+                        <p>Regular updates ensure your prompts stay effective as AI models and customer expectations evolve.</p>
                         <div class="card-design-element"></div>
                     </div>
                 </div>
             </div>
-            <div class="angled-divider"></div>
         </section>
 
-        <!-- Process Section -->
-        <section class="process" id="process">
+        <!-- Testimonials Section -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="testimonials-container">
+                <div class="section-heading">
+                    <div class="section-tag">Success Stories</div>
+                    <h2 class="section-title">What Our <span class="gradient-text">Clients Say</span></h2>
+                    <p class="section-subtitle">Hear from businesses that have transformed their customer experiences with our agentic AI prompt packs</p>
+                </div>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "The Sales Acceleration Pack helped our team close 32% more deals in just the first month. The objection handling prompts are worth their weight in gold - they've completely transformed how we approach difficult conversations."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MJ</div>
+                            <div>
+                                <div class="author-name">Michael Jenkins</div>
+                                <div class="author-role">VP of Sales, TechSolutions Inc.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Our content team was struggling to keep up with demand until we implemented the Marketing Catalyst Pack. Now we produce 3x more high-quality content with the same team size, and our engagement metrics have never been better."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AL</div>
+                            <div>
+                                <div class="author-name">Amanda Liu</div>
+                                <div class="author-role">Marketing Director, GrowthBrand</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "Support Excellence Pack has been a game-changer for our customer service team. Our resolution times are down 45%, and satisfaction scores have increased by 28 points. The escalation handling workflows are particularly impressive."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DR</div>
+                            <div>
+                                <div class="author-name">David Rodriguez</div>
+                                <div class="author-role">CX Manager, ServiceFirst</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="process" id="how-it-works">
             <div class="container">
                 <div class="section-intro scroll-observe">
-                    <div class="section-tag">Our Methodology</div>
-                    <h2>The Clarity<span class="highlight">AI</span> <span class="gradient-text">R&D Process</span></h2>
-                    <p>A methodical approach to developing effective agentic AI solutions for your business</p>
+                    <div class="section-tag">Implementation Process</div>
+                    <h2>How to <span class="gradient-text">Get Started</span></h2>
+                    <p>Implementing our agentic AI prompt packs is straightforward and designed for immediate impact</p>
                 </div>
                 <div class="process-timeline">
                     <div class="process-step scroll-observe">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3>Discovery & Analysis</h3>
-                            <p>In-depth assessment of your marketing, sales, or CX workflows to identify high-impact opportunities for agentic AI implementation.</p>
+                            <h3>Select Your Pack</h3>
+                            <p>Choose the prompt pack that aligns with your team's needs—whether it's sales, marketing, support, or the complete bundle for full customer journey optimization.</p>
                             <div class="step-icon">
-                                <i class="fas fa-search"></i>
+                                <i class="fas fa-shopping-cart"></i>
                             </div>
                         </div>
                     </div>
                     <div class="process-step scroll-observe">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h3>Agent Architecture</h3>
-                            <p>Design custom agent frameworks with defined capabilities, knowledge bases, and integration points tailored to your specific business requirements.</p>
+                            <h3>Access Your Materials</h3>
+                            <p>Immediately receive access to your prompt library, implementation guides, workflow integration tutorials, and customization templates.</p>
                             <div class="step-icon">
-                                <i class="fas fa-sitemap"></i>
+                                <i class="fas fa-download"></i>
                             </div>
                         </div>
                     </div>
                     <div class="process-step scroll-observe">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3>Prototype & Testing</h3>
-                            <p>Develop working prototypes of agentic systems and refine through iterative testing with real business data and scenarios.</p>
+                            <h3>Integrate & Customize</h3>
+                            <p>Follow our step-by-step guide to integrate the prompts with your preferred AI tools and customize them for your specific industry and brand voice.</p>
                             <div class="step-icon">
-                                <i class="fas fa-vial"></i>
+                                <i class="fas fa-cogs"></i>
                             </div>
                         </div>
                     </div>
                     <div class="process-step scroll-observe">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h3>Deployment & Optimization</h3>
-                            <p>Seamless implementation of agentic workflows with continuous performance monitoring, refinement, and team capability building.</p>
+                            <h3>Measure & Optimize</h3>
+                            <p>Track performance with our included analytics framework and fine-tune your approach based on real-world results and our quarterly updates.</p>
                             <div class="step-icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
@@ -292,96 +363,90 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials" id="testimonials">
-            <div class="container">
-                <div class="section-intro scroll-observe">
-                    <div class="section-tag">Success Stories</div>
-                    <h2>What Our Clients <span class="gradient-text">Say</span></h2>
-                    <p>Results from organizations we've helped transform with agentic AI solutions</p>
+        <!-- FAQs Section -->
+        <section class="faqs-section" id="faqs">
+            <div class="faqs-container">
+                <div class="section-heading">
+                    <div class="section-tag">Common Questions</div>
+                    <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                    <p class="section-subtitle">Everything you need to know about our agentic AI prompt packs</p>
                 </div>
-                <div class="testimonials-slider">
-                    <div class="testimonial">
-                        <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I use these prompt packs with my current AI tools?</span>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="testimonial-content">
-                            <p>"Clarity AI helped us develop a network of AI agents that revolutionized our content marketing workflow. The system now handles everything from topic research to draft creation and optimization, saving our team 25+ hours weekly while improving quality."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <div class="avatar-placeholder">SJ</div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Sarah Johnson</h4>
-                                <p>CMO, RetailTech Solutions</p>
-                                <div class="author-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
+                        <div class="faq-answer">
+                            Our prompt packs are designed to work with popular AI models like GPT-4, Claude, and similar LLMs. You'll receive comprehensive instructions on how to implement them with various AI platforms including ChatGPT, Anthropic's Claude, and custom AI solutions. Each prompt includes context-specific guidance for optimal results.
                         </div>
                     </div>
-                    <div class="testimonial" style="display: none;">
-                        <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need technical expertise to implement these solutions?</span>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="testimonial-content">
-                            <p>"Working with Clarity AI transformed our sales qualification process. Their customized agent framework now handles lead scoring, initial outreach, and meeting scheduling autonomously. Our sales team can focus solely on high-value conversations, increasing conversion rates by 42%."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <div class="avatar-placeholder">MC</div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Michael Chen</h4>
-                                <p>VP of Sales, FinTech Innovations</p>
-                                <div class="author-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
+                        <div class="faq-answer">
+                            No technical expertise required! Our prompt packs are designed to be user-friendly and accessible to team members at all technical levels. They come with clear implementation guides and examples. For more advanced customization, we offer optional implementation support.
                         </div>
                     </div>
-                    <div class="testimonial" style="display: none;">
-                        <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How often are the prompt packs updated?</span>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="testimonial-content">
-                            <p>"Our customer support team was overwhelmed with repetitive queries. Clarity AI designed an intelligent agentic system that now handles 78% of customer interactions autonomously, with satisfaction ratings that exceed our human team. The ROI was evident within weeks."</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <div class="avatar-placeholder">RW</div>
-                            </div>
-                            <div class="author-info">
-                                <h4>Rebecca Wong</h4>
-                                <p>Customer Experience Director, SaaS Global</p>
-                                <div class="author-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
+                        <div class="faq-answer">
+                            We provide quarterly updates to all prompt packs to ensure they remain effective with the latest AI models and evolving customer expectations. Major updates are provided at no additional cost for the first year, and afterwards through our affordable maintenance program.
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can the prompts be customized for my specific industry?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! Each pack includes guidance on how to adapt the prompts for your specific industry. We also offer industry-specific add-ons for healthcare, financial services, e-commerce, SaaS, and more. For enterprise clients, we provide custom prompt development to perfectly align with your brand voice and specific use cases.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer refunds if I'm not satisfied?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes, we stand behind our products with a 30-day satisfaction guarantee. If you're not seeing meaningful results after implementing our prompt packs, we'll refund your purchase. We also offer a free consultation to ensure you're getting the most value from your investment.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do these packs differ from free prompts available online?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Our premium prompt packs are fundamentally different from free alternatives. They're based on thousands of hours of testing and refinement, include complete frameworks rather than individual prompts, integrate workflow optimization, and are continuously updated based on performance data. Each prompt is engineered with specific business outcomes in mind, not just generic results.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to Transform Your Customer Experience?</h2>
+                <p class="cta-subtitle">Join hundreds of forward-thinking businesses already leveraging our agentic AI solutions</p>
+                <a href="#products" class="cta-button-white">
+                    <i class="fas fa-rocket"></i> Get Your Prompt Pack
+                </a>
+            </div>
+        </section>
+        
         <!-- Newsletter Section -->
         <section class="newsletter" id="newsletter">
             <div class="blob-background">
@@ -391,17 +456,16 @@
             <div class="container">
                 <div class="newsletter-container">
                     <div class="newsletter-content">
-                        <div class="section-tag light">Weekly Insights</div>
-                        <h2>Stay Ahead of <span class="gradient-text-alt">Agentic AI Trends</span></h2>
-                        <p>Join our weekly newsletter for exclusive insights on agentic AI development, implementation frameworks, and success stories delivered straight to your inbox.</p>
+                        <div class="section-tag light">AI Insights</div>
+                        <h2>Stay Ahead of <span class="gradient-text-alt">AI Trends</span></h2>
+                        <p>Join our newsletter for exclusive AI implementation strategies, prompt engineering tips, and early access to new prompt packs.</p>
                         <ul class="newsletter-benefits">
-                            <li><i class="fas fa-check"></i> <span>Emerging agentic AI capabilities & applications</span></li>
-                            <li><i class="fas fa-check"></i> <span>Implementation frameworks for marketing & sales</span></li>
-                            <li><i class="fas fa-check"></i> <span>Early access to research papers & case studies</span></li>
+                            <li><i class="fas fa-check"></i> <span>Weekly prompt optimization tips</span></li>
+                            <li><i class="fas fa-check"></i> <span>AI implementation case studies</span></li>
+                            <li><i class="fas fa-check"></i> <span>Exclusive discounts and early access</span></li>
                         </ul>
                     </div>
                     <div class="newsletter-form">
-                        <!-- Simple email signup form as fallback -->
                         <form class="signup-form" action="#" method="post">
                             <input type="email" name="email" placeholder="Your email address" required>
                             <button type="submit" class="newsletter-button">
@@ -413,41 +477,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- Contact Section -->
-        <section class="contact" id="contact">
-            <div class="container">
-                <div class="contact-container">
-                    <div class="contact-content">
-                        <div class="section-tag">Get Started</div>
-                        <h2>Ready to Transform Your Workflows <span class="gradient-text">with Agentic AI?</span></h2>
-                        <p>Schedule a free 30-minute strategy session to discuss your specific marketing, sales, or CX challenges and explore agentic AI opportunities.</p>
-                        <div class="contact-benefits">
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                                <div class="benefit-text">Identify your highest-impact agentic AI opportunities</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i class="fas fa-robot"></i></div>
-                                <div class="benefit-text">Explore custom agent frameworks for your business</div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="benefit-icon"><i class="fas fa-calculator"></i></div>
-                                <div class="benefit-text">Discuss potential ROI and implementation timeline</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-cta">
-                        <a href="https://calendar.app.google/A3qNVyLJjrkH5rWN6" target="_blank" class="contact-button">
-                            <i class="far fa-calendar-check"></i> Schedule Free Strategy Call
-                        </a>
-                        <p class="contact-guarantee">No obligation, no pressure. Just valuable insights for your business.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
-
+        
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -455,7 +486,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <span>Clarity<span class="highlight">AI</span></span>
-                        <p>Agentic AI R&D Consulting</p>
+                        <p>Premium Agentic AI Solutions</p>
                     </div>
                     <div class="footer-social">
                         <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn Profile">
@@ -464,30 +495,33 @@
                         <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter Profile">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://github.com/" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub Profile">
-                            <i class="fab fa-github"></i>
+                        <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram Profile">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-sections">
                     <div class="footer-section">
-                        <h4>Services</h4>
-                        <a href="#services">Agentic Workflow Design</a>
-                        <a href="#services">Custom Agent Development</a>
-                        <a href="#services">Implementation & Training</a>
+                        <h4>Products</h4>
+                        <a href="#products">Sales Acceleration Pack</a>
+                        <a href="#products">Marketing Catalyst Pack</a>
+                        <a href="#products">Support Excellence Pack</a>
+                        <a href="#products">Complete CX Suite</a>
                     </div>
                     <div class="footer-section">
                         <h4>Company</h4>
-                        <a href="#process">Our Process</a>
+                        <a href="#how-it-works">How It Works</a>
                         <a href="#testimonials">Case Studies</a>
+                        <a href="#faqs">FAQs</a>
                         <a href="#contact">Contact</a>
                     </div>
                     <div class="footer-section">
                         <h4>Resources</h4>
-                        <a href="#newsletter">Newsletter</a>
-                        <a href="#newsletter">Agentic AI Guides</a>
-                        <a href="#newsletter">Implementation Tips</a>
+                        <a href="#newsletter">AI Newsletter</a>
+                        <a href="#">Prompt Engineering Guide</a>
+                        <a href="#">Implementation Tips</a>
+                        <a href="#">AI Glossary</a>
                     </div>
                 </div>
             </div>
@@ -499,12 +533,13 @@
                 <div class="footer-legal">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
+                    <a href="#">Refund Policy</a>
                 </div>
             </div>
         </div>
     </footer>
     
-    <!-- Use external JavaScript file instead of inline script -->
+    <!-- JavaScript for website functionality -->
     <script src="js/main.js"></script>
 </body>
 </html>
