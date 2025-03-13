@@ -1,4 +1,32 @@
-/* Base Styles */
+/* Toggle Animation Button */
+.toggle-animation-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(45, 55, 72, 0.7);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.toggle-animation-btn:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.toggle-animation-btn.disabled {
+    background-color: rgba(203, 213, 224, 0.7);
+    color: var(--text-dark);
+}/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -151,7 +179,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 20px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -162,6 +190,13 @@ section {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logo {
@@ -252,7 +287,7 @@ section {
 
 /* Hero Section */
 .hero-section {
-    padding: 10rem 0 6rem;
+    padding: 8rem 0 6rem;
     position: relative;
     overflow: hidden;
 }
