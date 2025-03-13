@@ -1,4 +1,44 @@
-// Main JavaScript file for Clarity AI Website
+// Setup Animation Toggle
+function setupAnimationToggle() {
+    const toggleBtn = document.getElementById('toggle-animation');
+    const neuralNetwork = document.getElementById('neural-network');
+    
+    if (toggleBtn && neuralNetwork) {
+        // Check for saved preference
+        const animationDisabled = localStorage.getItem('animation-disabled') === 'true';
+        
+        // Apply saved preference
+        if (animationDisabled) {
+            neuralNetwork.style.display = 'none';
+            toggleBtn.classList.add('disabled');
+            toggleBtn.title = 'Enable Animation';
+        }
+        
+        toggleBtn.addEventListener('click', function() {
+            if (neuralNetwork.style.display === 'none') {
+                // Enable animation
+                neuralNetwork.style.display = 'block';
+                toggleBtn.classList.remove('disabled');
+                toggleBtn.title = 'Disable Animation';
+                localStorage.setItem('animation-disabled', 'false');
+                
+                // Restart animation
+                createNeuralNetworkAnimation();
+            } else {
+                // Disable animation
+                neuralNetwork.style.display = 'none';
+                toggleBtn.classList.add('disabled');
+                toggleBtn.title = 'Enable Animation';
+                localStorage.setItem('animation-disabled', 'true');
+                
+                // Clear all animation nodes
+                while (neuralNetwork.firstChild) {
+                    neuralNetwork.removeChild(neuralNetwork.firstChild);
+                }
+            }
+        });
+    }
+}// Main JavaScript file for Clarity AI Website
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
@@ -18,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling for internal links
     setupSmoothScrolling();
+    
+    // Setup animation toggle
+    setupAnimationToggle();
 });
 
 // Mobile Menu Setup
@@ -170,12 +213,13 @@ function createNeuralNetworkAnimation() {
     const container = document.getElementById('neural-network');
     if (!container) return;
     
+    // Performance optimization - reduce the number of nodes and connections
     const width = container.clientWidth;
     const height = container.clientHeight;
-    const nodeCount = Math.min(40, Math.floor(width * height / 10000)); // Responsive node count
+    const nodeCount = Math.min(20, Math.floor(width * height / 20000)); // Reduced node count
     const nodes = [];
     const connections = [];
-    const connectionDistance = Math.min(150, width * 0.15); // Responsive connection distance
+    const connectionDistance = Math.min(150, width * 0.15); 
     
     // Create nodes
     for (let i = 0; i < nodeCount; i++) {
@@ -185,8 +229,8 @@ function createNeuralNetworkAnimation() {
         const x = Math.random() * width;
         const y = Math.random() * height;
         const size = Math.random() * 4 + 2;
-        const speedX = (Math.random() - 0.5) * 0.5;
-        const speedY = (Math.random() - 0.5) * 0.5;
+        const speedX = (Math.random() - 0.5) * 0.3; // Slower movement
+        const speedY = (Math.random() - 0.5) * 0.3; // Slower movement
         
         node.style.left = x + 'px';
         node.style.top = y + 'px';
@@ -202,12 +246,13 @@ function createNeuralNetworkAnimation() {
         });
     }
     
-    // Create connections (limit based on device performance)
-    const maxConnections = Math.min(nodeCount * nodeCount * 0.3, 200);
+    // Create connections (significantly reduced for performance)
+    const maxConnections = Math.min(nodeCount * 2, 30); // Much fewer connections
     let connectionCount = 0;
     
     for (let i = 0; i < nodeCount && connectionCount < maxConnections; i++) {
-        for (let j = i + 1; j < nodeCount && connectionCount < maxConnections; j++) {
+        // Only connect to a few nearby nodes
+        for (let j = i + 1; j < Math.min(i + 4, nodeCount) && connectionCount < maxConnections; j++) {
             const connection = document.createElement('div');
             connection.className = 'neural-connection';
             container.appendChild(connection);
@@ -225,14 +270,25 @@ function createNeuralNetworkAnimation() {
     // Animation loop with performance optimization
     let animationFrameId;
     let lastTimestamp = 0;
-    const fps = 30;
+    const fps = 20; // Reduced FPS for better performance
     const interval = 1000 / fps;
+    let isScrolling = false;
+    
+    // Pause animation during scroll
+    window.addEventListener('scroll', function() {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        
+        const scrollTimeout = setTimeout(function() {
+            isScrolling = false;
+        }, 200);
+    });
     
     function animate(timestamp) {
         animationFrameId = requestAnimationFrame(animate);
         
-        // Throttle to desired fps
-        if (timestamp - lastTimestamp < interval) return;
+        // Skip frames if scrolling or to maintain desired FPS
+        if (isScrolling || timestamp - lastTimestamp < interval) return;
         lastTimestamp = timestamp;
         
         // Update node positions
@@ -288,18 +344,21 @@ function createNeuralNetworkAnimation() {
     });
     
     // Resize handler
+    let resizeTimeout;
     window.addEventListener('resize', function() {
-        // Clear existing animation
-        cancelAnimationFrame(animationFrameId);
-        
-        // Clear existing nodes and connections
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-        
-        // Reinitialize animation
-        setTimeout(() => {
+        // Debounce resize handler
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Clear existing animation
+            cancelAnimationFrame(animationFrameId);
+            
+            // Clear existing nodes and connections
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            
+            // Reinitialize animation
             createNeuralNetworkAnimation();
-        }, 200);
+        }, 300);
     });
 }
