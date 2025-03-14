@@ -571,80 +571,92 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section" id="contact">
-            <div class="container">
-                <div class="personalized-cta">
-                    <div class="cta-text-container">
-                        <h2 class="cta-title">Let's Create Your <span class="gradient-text">AI Strategy</span></h2>
-                        <p class="cta-subtitle">Every business has unique needs. Schedule a personalized call where we'll discuss your specific challenges and craft a tailored AI approach just for you.</p>
-                        
-                        <div class="cta-benefits">
-                            <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-fingerprint"></i></div>
-                                <div class="benefit-text">Custom strategy based on your team's unique workflow</div>
-                            </div>
-                            <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-clock"></i></div>
-                                <div class="benefit-text">30-minute focused conversation, not a generic sales pitch</div>
-                            </div>
-                            <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                                <div class="benefit-text">Actionable insights you can implement immediately</div>
-                            </div>
-                        </div>
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+    <div class="container">
+        <div class="personalized-cta">
+            <div class="cta-text-container">
+                <h2 class="cta-title">Let's Create Your <span class="gradient-text">AI Strategy</span></h2>
+                <p class="cta-subtitle">Every business has unique needs. Schedule a personalized call where we'll discuss your specific challenges and craft a tailored AI approach just for you.</p>
+                
+                <div class="cta-benefits">
+                    <div class="cta-benefit">
+                        <div class="benefit-icon"><i class="fas fa-filter"></i></div>
+                        <div class="benefit-text">AI-powered lead prioritization that identifies your most promising opportunities</div>
                     </div>
-                    
-                    <div class="contact-form-container">
-                        <div class="form-header">
-                            <div class="personal-touch-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <h3>Schedule Your Strategy Call</h3>
-                        </div>
-                        
-                        <form id="contact-form" class="contact-form" action="#" method="post">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" placeholder="Your email" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="company">Company</label>
-                                    <input type="text" id="company" name="company" placeholder="Your company name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="role">Your Role</label>
-                                    <select id="role" name="role" required>
-                                        <option value="" disabled selected>Select your role</option>
-                                        <option value="CX Leader">CX Leader</option>
-                                        <option value="Sales Leader">Sales Leader</option>
-                                        <option value="Marketing Leader">Marketing Leader</option>
-                                        <option value="Support Leader">Support Leader</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="message">What's your biggest AI implementation challenge?</label>
-                                <textarea id="message" name="message" placeholder="Tell us a bit about your specific situation..." rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="submit-button">
-                                <span class="button-text">Book My Personalized Strategy Call</span>
-                                <span class="button-icon"><i class="fas fa-calendar-check"></i></span>
-                            </button>
-                            <p class="form-disclaimer">We'll follow up within 24 hours to confirm your appointment. Your information remains private and will never be shared.</p>
-                        </form>
+                    <div class="cta-benefit">
+                        <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                        <div class="benefit-text">Automated workflows that free your team from repetitive tasks while maintaining quality</div>
+                    </div>
+                    <div class="cta-benefit">
+                        <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="benefit-text">Custom AI agents that help scale your best ideas across your entire organization</div>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <div class="personal-touch-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Schedule Your Strategy Call</h3>
+                </div>
+                
+                <form id="contact-form" class="contact-form" action="#" method="post">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" placeholder="Your company name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <select id="role" name="role" required>
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="CX Leader">CX Leader</option>
+                                <option value="Sales Leader">Sales Leader</option>
+                                <option value="Marketing Leader">Marketing Leader</option>
+                                <option value="Support Leader">Support Leader</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="challenge">What's your biggest AI implementation challenge?</label>
+                        <select id="challenge" name="challenge" required>
+                            <option value="" disabled selected>Select your biggest challenge</option>
+                            <option value="Finding Qualified Leads">Finding and qualifying the right leads</option>
+                            <option value="Personalizing Outreach">Personalizing outreach at scale</option>
+                            <option value="Data Analysis">Making sense of customer/market data</option>
+                            <option value="AI Integration">Integrating AI with existing tools</option>
+                            <option value="Team Adoption">Getting my team to adopt AI effectively</option>
+                            <option value="Other">Other (please specify below)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Any additional details?</label>
+                        <textarea id="message" name="message" placeholder="Tell us a bit more about your specific situation..." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <span class="button-text">Book My Personalized Strategy Call</span>
+                        <span class="button-icon"><i class="fas fa-calendar-check"></i></span>
+                    </button>
+                    <p class="form-disclaimer">We'll follow up within 24 hours to confirm your appointment. Your information remains private and will never be shared.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
         
         <!-- Newsletter Section -->
         <section class="newsletter" id="newsletter">
