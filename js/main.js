@@ -39,7 +39,9 @@ function setupCounterAnimations() {
             observer.observe(counter);
         });
     }
-}// Setup Animation Toggle
+}
+
+// Setup Animation Toggle
 function setupAnimationToggle() {
     const toggleBtn = document.getElementById('toggle-animation');
     const neuralNetwork = document.getElementById('neural-network');
@@ -79,8 +81,167 @@ function setupAnimationToggle() {
             }
         });
     }
-}// Main JavaScript file for Clarity AI Website
+}
 
+// Solutions Section Tab Functionality
+function setupSolutionTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabButtons.length) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and tabs
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding tab content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+                
+                // Reset and restart animations
+                setupAnimations();
+            });
+        });
+    }
+}
+
+// Setup Workflow Animation
+function setupWorkflowAnimation() {
+    const workflowSteps = document.querySelectorAll('.workflow-step');
+    const progressBar = document.querySelector('.progress-bar');
+    
+    if (workflowSteps.length && progressBar) {
+        let currentStep = 0;
+        
+        // Reset all steps first
+        workflowSteps.forEach(step => step.classList.remove('active'));
+        
+        // Set the first step as active initially
+        workflowSteps[0].classList.add('active');
+        progressBar.style.width = '20%';
+        
+        // Start animation cycle
+        const animateWorkflow = () => {
+            currentStep = (currentStep + 1) % workflowSteps.length;
+            
+            // Update active step
+            workflowSteps.forEach(step => step.classList.remove('active'));
+            workflowSteps[currentStep].classList.add('active');
+            
+            // Update progress bar
+            progressBar.style.width = `${(currentStep + 1) * (100 / workflowSteps.length)}%`;
+        };
+        
+        // Set interval for animation, but clear any existing interval first
+        if (window.workflowInterval) clearInterval(window.workflowInterval);
+        window.workflowInterval = setInterval(animateWorkflow, 2500);
+    }
+}
+
+// Setup Data Points Animation
+function setupDataAnimation() {
+    const dataPoints = document.querySelectorAll('.data-point');
+    const dataContainer = document.querySelector('.data-animation');
+    const connectionsContainer = document.querySelector('.data-connections');
+    
+    if (dataPoints.length && dataContainer && connectionsContainer) {
+        // Clear existing connections first
+        connectionsContainer.innerHTML = '';
+        
+        // Position data points randomly
+        dataPoints.forEach((point, index) => {
+            const x = 10 + (Math.random() * 80); // Keep within 10-90% of container width
+            const y = 10 + (Math.random() * 80); // Keep within 10-90% of container height
+            
+            point.style.left = `${x}%`;
+            point.style.top = `${y}%`;
+            
+            // Add subtle animation
+            point.style.animation = `pulse ${2 + Math.random() * 2}s infinite`;
+            point.style.animationDelay = `${Math.random() * 2}s`;
+        });
+        
+        // Create connections between points (not all, just some close ones)
+        for (let i = 0; i < dataPoints.length; i++) {
+            const point1 = dataPoints[i].getBoundingClientRect();
+            const point1CenterX = point1.left + point1.width / 2;
+            const point1CenterY = point1.top + point1.height / 2;
+            
+            for (let j = i + 1; j < dataPoints.length; j++) {
+                const point2 = dataPoints[j].getBoundingClientRect();
+                const point2CenterX = point2.left + point2.width / 2;
+                const point2CenterY = point2.top + point2.height / 2;
+                
+                // Calculate distance between points
+                const dx = point2CenterX - point1CenterX;
+                const dy = point2CenterY - point1CenterY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Only connect close points (adjust threshold as needed)
+                if (distance < 100) {
+                    const connection = document.createElement('div');
+                    connection.className = 'data-connection';
+                    connection.style.position = 'absolute';
+                    connection.style.height = '1px';
+                    connection.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+                    
+                    // Position and rotate the connection line
+                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                    const length = distance;
+                    
+                    connection.style.width = `${length}px`;
+                    connection.style.left = `${point1CenterX - dataContainer.getBoundingClientRect().left}px`;
+                    connection.style.top = `${point1CenterY - dataContainer.getBoundingClientRect().top}px`;
+                    connection.style.transform = `rotate(${angle}deg)`;
+                    connection.style.transformOrigin = 'left center';
+                    
+                    connectionsContainer.appendChild(connection);
+                }
+            }
+        }
+    }
+}
+
+// Setup All Animations
+function setupAnimations() {
+    setupWorkflowAnimation();
+    setupDataAnimation();
+    
+    // Add any other animations here as needed
+}
+
+// Initialize Everything for Solutions Section
+window.initSolutionsSection = function() {
+    setupSolutionTabs();
+    setupAnimations();
+    
+    // Add solutions section to the existing scroll observer
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // If this is one of our animation containers, reset animations
+                if (entry.target.closest('.tab-content')) {
+                    setupAnimations();
+                }
+                
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    // Observe all scroll elements in the solutions section
+    document.querySelectorAll('.solutions-section .scroll-observe').forEach(el => {
+        scrollObserver.observe(el);
+    });
+};
+
+// Main JavaScript file for Clarity AI Website
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
     setupMobileMenu();
@@ -105,6 +266,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup counter animations
     setupCounterAnimations();
+    
+    // Initialize Solutions Section if it exists
+    if (document.querySelector('.solutions-section')) {
+        window.initSolutionsSection();
+    }
 });
 
 // Mobile Menu Setup
