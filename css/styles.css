@@ -1654,3 +1654,106 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+
+/* Enhanced Founder Story Styles */
+.founder-journey {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.journey-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+}
+
+.journey-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.journey-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.journey-icon {
+    background: var(--gradient-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.founder-quote {
+    background-color: rgba(49, 130, 206, 0.08);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+.founder-quote p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Update existing founder styles */
+.founder-text {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.founder-text strong {
+    color: var(--primary-color);
+}
+
+.founder-message {
+    max-width: 650px;
+}
+
+.founder-achievements {
+    background-color: var(--background-white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-light);
+}
+
+/* Make founder section responsive */
+@media (max-width: 992px) {
+    .founder-journey {
+        padding: 1.5rem;
+    }
+    
+    .founder-quote p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .journey-item {
+        flex-direction: column;
+    }
+    
+    .journey-icon {
+        margin-bottom: 1rem;
+    }
+}
