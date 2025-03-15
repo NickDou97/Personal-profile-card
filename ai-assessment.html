@@ -311,6 +311,33 @@
             transition: all 0.3s ease;
         }
         
+        .radar-circle:nth-child(1) {
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            animation: rotate 20s linear infinite;
+            opacity: 0.4;
+        }
+        
+        .radar-circle:nth-child(2) {
+            top: 30%;
+            left: 30%;
+            width: 40%;
+            height: 40%;
+            animation: rotate 15s linear infinite reverse;
+            opacity: 0.6;
+        }
+        
+        .radar-circle:nth-child(3) {
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+            animation: rotate 10s linear infinite;
+            opacity: 0.8;
+        }
+        
         .radar-axes {
             position: absolute;
             top: 0;
@@ -422,6 +449,109 @@
                 margin: 2rem auto;
             }
         }
+        
+        /* Lead Scoring Animation */
+        .hero-animation {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: rgba(45, 55, 72, 0.2);
+            backdrop-filter: blur(8px);
+        }
+        
+        .code-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideFadeIn 0.5s ease forwards;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .code-line::before {
+            content: '>';
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+        
+        .code-line:nth-child(1) {
+            top: 0;
+            animation-delay: 0s;
+        }
+        
+        .code-line:nth-child(2) {
+            top: 2.5rem;
+            animation-delay: 1s;
+        }
+        
+        .code-line:nth-child(3) {
+            top: 5rem;
+            animation-delay: 2s;
+        }
+        
+        .lead-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            margin-left: 1rem;
+            font-size: 0.75rem;
+            animation: scoreUpdate 0.3s ease forwards;
+        }
+        
+        .lead-score {
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .lead-status {
+            padding: 0.125rem 0.375rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+        
+        .status-high {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-blue);
+        }
+        
+        .status-medium {
+            background: rgba(94, 234, 212, 0.2);
+            color: var(--accent-teal);
+        }
+        
+        @keyframes slideFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scoreUpdate {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -429,6 +559,21 @@
         <header>
             <h1>AI-Native Assessment</h1>
             <p>Evaluate your organization's AI maturity across key dimensions</p>
+            <div class="hero-animation">
+                <div class="code-line">Analyzing lead data... <span class="lead-item">Processing <i class="fas fa-spinner fa-spin"></i></span></div>
+                <div class="code-line">Applying AI scoring model... 
+                    <span class="lead-item">
+                        <span class="lead-score">Score: 85</span>
+                        <span class="lead-status status-high">High Value</span>
+                    </span>
+                </div>
+                <div class="code-line">Filtering qualified leads... 
+                    <span class="lead-item">
+                        <span class="lead-score">Found: 24</span>
+                        <span class="lead-status status-medium">Qualified</span>
+                    </span>
+                </div>
+            </div>
         </header>
         
         <div class="grid">
@@ -707,6 +852,48 @@
                 exportBtn.style.pointerEvents = 'auto';
             }
         });
+
+        // Lead Scoring Animation
+        function resetAnimation() {
+            const codeLines = document.querySelectorAll('.code-line');
+            codeLines.forEach(line => {
+                line.style.opacity = '0';
+                line.style.transform = 'translateX(-20px)';
+                void line.offsetWidth; // Trigger reflow
+                line.style.opacity = '';
+                line.style.transform = '';
+            });
+        }
+
+        function updateLeadScores() {
+            const score = Math.floor(Math.random() * 30) + 70; // Random score between 70-99
+            const leads = Math.floor(Math.random() * 15) + 15; // Random leads between 15-29
+            
+            document.querySelector('.code-line:nth-child(2) .lead-score').textContent = `Score: ${score}`;
+            document.querySelector('.code-line:nth-child(3) .lead-score').textContent = `Found: ${leads}`;
+            
+            // Update status based on score
+            const statusElement = document.querySelector('.code-line:nth-child(2) .lead-status');
+            if (score >= 90) {
+                statusElement.textContent = 'Premium';
+                statusElement.className = 'lead-status status-high';
+            } else if (score >= 80) {
+                statusElement.textContent = 'High Value';
+                statusElement.className = 'lead-status status-high';
+            } else {
+                statusElement.textContent = 'Qualified';
+                statusElement.className = 'lead-status status-medium';
+            }
+        }
+
+        // Start the animation loop
+        setInterval(() => {
+            resetAnimation();
+            updateLeadScores();
+        }, 6000); // Reset every 6 seconds
+
+        // Initial update
+        updateLeadScores();
     </script>
 </body>
 </html> 
