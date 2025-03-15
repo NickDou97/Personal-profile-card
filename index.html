@@ -3,72 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Clarity AI | Agentic AI Solutions for CX Teams</title>
+    <meta name="title" content="Clarity AI | Agentic AI Solutions for CX Teams">
     <meta name="description" content="Clarity AI - Agentic AI solutions that empower CX teams to scale personalized outreach without sacrificing authenticity">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://clarityai.com/">
     <meta property="og:title" content="Clarity AI | Agentic AI Solutions for CX Teams">
     <meta property="og:description" content="Expert consulting for developing and implementing agentic AI workflows that help CX teams build intentional, scalable strategies">
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://clarityai.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://clarityai.com/">
+    <meta property="twitter:title" content="Clarity AI | Agentic AI Solutions for CX Teams">
+    <meta property="twitter:description" content="Expert consulting for developing and implementing agentic AI workflows that help CX teams build intentional, scalable strategies">
+    <meta property="twitter:image" content="https://clarityai.com/images/og-image.jpg">
     
-    <title>Clarity AI | Agentic AI Solutions for CX Teams</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Preconnect to CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="css/monochrome.css" as="style">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    
+    <!-- Fonts and Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Fixed CSS loading order -->
     <link rel="stylesheet" href="css/monochrome.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="gradient-bg">
+    <div class="gradient-bg" aria-hidden="true">
         <div class="neural-animation" id="neural-network"></div>
-        <button id="toggle-animation" class="toggle-animation-btn" title="Toggle Animation">
-            <i class="fas fa-power-off"></i>
+        <button id="toggle-animation" class="toggle-animation-btn" title="Toggle Animation" aria-label="Toggle background animation">
+            <i class="fas fa-power-off" aria-hidden="true"></i>
         </button>
     </div>
     
-    <header>
-        <nav class="navbar">
+    <header role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="container">
-                <div class="logo">
-                    <span>Clarity<span class="highlight">AI</span></span>
+                <div class="logo" role="heading" aria-level="1">
+                    <a href="/" aria-label="Clarity AI Homepage">
+                        <span>Clarity<span class="highlight">AI</span></span>
+                    </a>
                 </div>
-                <div class="nav-links">
-                    <a href="#problem">The Problem</a>
-                    <a href="#solution">The Solution</a>
-                    <a href="#results">Results</a>
-                    <!-- Updated navigation link -->
-                    <a href="#solutions">Solutions</a>
+                <div class="nav-links" role="list">
+                    <a href="#problem" role="listitem">The Problem</a>
+                    <a href="#solution" role="listitem">The Solution</a>
+                    <a href="#results" role="listitem">Results</a>
+                    <a href="#solutions" role="listitem">Solutions</a>
                 </div>
-                <a href="#contact" class="nav-cta">Book a Strategy Call</a>
-                <div class="mobile-menu-btn">
+                <a href="#contact" class="nav-cta" role="button">Book a Strategy Call</a>
+                <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="hero-section" aria-labelledby="hero-heading">
             <div class="container hero-container">
                 <div class="hero-text">
-                    <div class="badge">Agentic AI Solutions for CX Teams</div>
-                    <h1 class="hero-headline">Scale Your Outreach While Keeping It <span class="gradient-text">Human</span></h1>
+                    <div class="badge" role="text">Agentic AI Solutions for CX Teams</div>
+                    <h1 id="hero-heading" class="hero-headline">Scale Your Outreach While Keeping It <span class="gradient-text">Human</span></h1>
                     <p class="hero-subheadline">Cutting through the noise in 2025 isn't about more activity—it's about smarter, more authentic engagement powered by AI agents that truly connect with prospects.</p>
                     <div class="hero-buttons">
-                        <a href="#contact" class="primary-button">
+                        <a href="#contact" class="primary-button" role="button">
                             <span class="button-text">Book a Strategy Call</span>
-                            <span class="button-icon"><i class="fas fa-arrow-right"></i></span>
+                            <span class="button-icon" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
                         </a>
-                        <a href="#founder-story" class="secondary-button">Learn My Approach</a>
+                        <a href="#founder-story" class="secondary-button" role="button">Learn My Approach</a>
                     </div>
                 </div>
-                <div class="hero-image">
+                <div class="hero-image" aria-hidden="true">
                     <div class="hero-animation-wrapper">
                         <div class="hero-terminal">
                             <div class="terminal-header">
@@ -284,19 +309,19 @@
                                     
                                     <div class="solution-features">
                                         <div class="feature-item">
-                                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                            <span class="feature-icon" aria-hidden="true"><i class="fas fa-check-circle"></i></span>
                                             <span class="feature-text">AI agents that understand your specific business context</span>
                                         </div>
                                         <div class="feature-item">
-                                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                            <span class="feature-icon" aria-hidden="true"><i class="fas fa-check-circle"></i></span>
                                             <span class="feature-text">Intuitive interfaces accessible to non-technical users</span>
                                         </div>
                                         <div class="feature-item">
-                                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                            <span class="feature-icon" aria-hidden="true"><i class="fas fa-check-circle"></i></span>
                                             <span class="feature-text">Reliability checks that prevent AI hallucinations</span>
                                         </div>
                                         <div class="feature-item">
-                                            <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                            <span class="feature-icon" aria-hidden="true"><i class="fas fa-check-circle"></i></span>
                                             <span class="feature-text">Customized to mission-critical processes</span>
                                         </div>
                                     </div>
@@ -308,9 +333,9 @@
                                 </div>
                                 <div class="solution-visual">
                                     <div class="assessment-quiz-button">
-                                        <a href="ai-assessment.html" target="_blank" class="quiz-launch-btn">
+                                        <a href="ai-assessment.html" target="_blank" class="quiz-launch-btn" aria-label="Take the AI Maturity Assessment">
                                             <div class="btn-content">
-                                                <div class="btn-icon">
+                                                <div class="btn-icon" aria-hidden="true">
                                                     <i class="fas fa-chart-pie"></i>
                                                 </div>
                                                 <div class="btn-text">
@@ -318,7 +343,7 @@
                                                     <p>Evaluate your organization's AI readiness in under 5 minutes</p>
                                                 </div>
                                             </div>
-                                            <div class="btn-arrow">
+                                            <div class="btn-arrow" aria-hidden="true">
                                                 <i class="fas fa-arrow-right"></i>
                                             </div>
                                         </a>
@@ -359,19 +384,8 @@
                                     </div>
                                 </div>
                                 <div class="solution-visual">
-                                    <div class="assessment-quiz-button">
-                                        <a href="ai-assessment.html" target="_blank" class="quiz-launch-btn">
-                                            <div class="btn-content">
-                                                <div class="btn-icon"><i class="fas fa-lightbulb"></i></div>
-                                                <div class="btn-text">
-                                                    <h4>Discover Your AI Potential</h4>
-                                                    <p>My personally designed framework for measuring readiness</p>
-                                                </div>
-                                            </div>
-                                            <div class="btn-arrow">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </div>
-                                        </a>
+                                    <div class="workflow-diagram">
+                                        <img src="images/workflow-diagram.svg" alt="Workflow automation process diagram" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -409,19 +423,8 @@
                                     </div>
                                 </div>
                                 <div class="solution-visual">
-                                    <div class="assessment-quiz-button">
-                                        <a href="ai-assessment.html" target="_blank" class="quiz-launch-btn">
-                                            <div class="btn-content">
-                                                <div class="btn-icon"><i class="fas fa-brain"></i></div>
-                                                <div class="btn-text">
-                                                    <h4>Measure Your AI Maturity</h4>
-                                                    <p>An assessment I built from my years of implementation experience</p>
-                                                </div>
-                                            </div>
-                                            <div class="btn-arrow">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </div>
-                                        </a>
+                                    <div class="data-visualization">
+                                        <img src="images/data-viz.svg" alt="Data intelligence visualization" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -459,19 +462,8 @@
                                     </div>
                                 </div>
                                 <div class="solution-visual">
-                                    <div class="assessment-quiz-button">
-                                        <a href="ai-assessment.html" target="_blank" class="quiz-launch-btn">
-                                            <div class="btn-content">
-                                                <div class="btn-icon"><i class="fas fa-rocket"></i></div>
-                                                <div class="btn-text">
-                                                    <h4>Evaluate Your AI Readiness</h4>
-                                                    <p>A custom framework I developed through real-world projects</p>
-                                                </div>
-                                            </div>
-                                            <div class="btn-arrow">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </div>
-                                        </a>
+                                    <div class="lead-funnel">
+                                        <img src="images/lead-funnel.svg" alt="Lead generation funnel visualization" loading="lazy">
                                     </div>
                                 </div>
                             </div>
@@ -686,24 +678,24 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="cta-section" id="contact">
+        <section class="cta-section" id="contact" aria-labelledby="cta-title">
             <div class="container">
                 <div class="personalized-cta">
                     <div class="cta-text-container">
-                        <h2 class="cta-title">Let's Create Your <span class="gradient-text">AI Strategy</span></h2>
+                        <h2 id="cta-title" class="cta-title">Let's Create Your <span class="gradient-text">AI Strategy</span></h2>
                         <p class="cta-subtitle">Every business has unique needs. Schedule a personalized call where we'll discuss your specific challenges and craft a tailored AI approach just for you.</p>
                         
                         <div class="cta-benefits">
                             <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-filter"></i></div>
+                                <div class="benefit-icon" aria-hidden="true"><i class="fas fa-filter"></i></div>
                                 <div class="benefit-text">AI-powered lead prioritization that identifies your most promising opportunities</div>
                             </div>
                             <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                                <div class="benefit-icon" aria-hidden="true"><i class="fas fa-clock"></i></div>
                                 <div class="benefit-text">Automated workflows that free your team from repetitive tasks while maintaining quality</div>
                             </div>
                             <div class="cta-benefit">
-                                <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="benefit-icon" aria-hidden="true"><i class="fas fa-lightbulb"></i></div>
                                 <div class="benefit-text">Custom AI agents that help scale your best ideas across your entire organization</div>
                             </div>
                         </div>
@@ -711,31 +703,66 @@
                     
                     <div class="contact-form-container">
                         <div class="form-header">
-                            <div class="personal-touch-icon">
+                            <div class="personal-touch-icon" aria-hidden="true">
                                 <i class="fas fa-comments"></i>
                             </div>
                             <h3>Schedule Your Strategy Call</h3>
                         </div>
                         
-                        <form id="contact-form" class="contact-form" action="#" method="post">
+                        <form id="contact-form" class="contact-form" action="/submit-form" method="post" novalidate>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                                    <label for="name">Full Name<span class="required" aria-hidden="true">*</span></label>
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        placeholder="Your name" 
+                                        required 
+                                        aria-required="true"
+                                        minlength="2"
+                                        pattern="[A-Za-z\s]+"
+                                        title="Please enter a valid name (letters and spaces only)"
+                                    >
+                                    <div class="error-message" aria-live="polite"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                                    <label for="email">Email Address<span class="required" aria-hidden="true">*</span></label>
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        placeholder="Your email" 
+                                        required 
+                                        aria-required="true"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        title="Please enter a valid email address"
+                                    >
+                                    <div class="error-message" aria-live="polite"></div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="company">Company</label>
-                                    <input type="text" id="company" name="company" placeholder="Your company name" required>
+                                    <label for="company">Company<span class="required" aria-hidden="true">*</span></label>
+                                    <input 
+                                        type="text" 
+                                        id="company" 
+                                        name="company" 
+                                        placeholder="Your company name" 
+                                        required 
+                                        aria-required="true"
+                                        minlength="2"
+                                    >
+                                    <div class="error-message" aria-live="polite"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="role">Your Role</label>
-                                    <select id="role" name="role" required>
+                                    <label for="role">Your Role<span class="required" aria-hidden="true">*</span></label>
+                                    <select 
+                                        id="role" 
+                                        name="role" 
+                                        required 
+                                        aria-required="true"
+                                    >
                                         <option value="" disabled selected>Select your role</option>
                                         <option value="CX Leader">CX Leader</option>
                                         <option value="Sales Leader">Sales Leader</option>
@@ -743,11 +770,17 @@
                                         <option value="Support Leader">Support Leader</option>
                                         <option value="Other">Other</option>
                                     </select>
+                                    <div class="error-message" aria-live="polite"></div>
                                 </div>
                             </div>
                             <div class="form-group full-width">
-                                <label for="challenge">What's your biggest AI implementation challenge?</label>
-                                <select id="challenge" name="challenge" required>
+                                <label for="challenge">What's your biggest AI implementation challenge?<span class="required" aria-hidden="true">*</span></label>
+                                <select 
+                                    id="challenge" 
+                                    name="challenge" 
+                                    required 
+                                    aria-required="true"
+                                >
                                     <option value="" disabled selected>Select your biggest challenge</option>
                                     <option value="Finding Qualified Leads">Finding and qualifying the right leads</option>
                                     <option value="Personalizing Outreach">Personalizing outreach at scale</option>
@@ -756,14 +789,24 @@
                                     <option value="Team Adoption">Getting my team to adopt AI effectively</option>
                                     <option value="Other">Other (please specify below)</option>
                                 </select>
+                                <div class="error-message" aria-live="polite"></div>
                             </div>
                             <div class="form-group full-width">
-                                <label for="message">Any additional details?</label>
-                                <textarea id="message" name="message" placeholder="Tell us a bit more about your specific situation..." rows="3"></textarea>
+                                <label for="message">Additional Details</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    placeholder="Tell us a bit more about your specific situation..." 
+                                    rows="3"
+                                    maxlength="500"
+                                ></textarea>
+                                <div class="character-count" aria-live="polite">
+                                    <span class="current">0</span>/500 characters
+                                </div>
                             </div>
                             <button type="submit" class="submit-button">
                                 <span class="button-text">Book My Personalized Strategy Call</span>
-                                <span class="button-icon"><i class="fas fa-calendar-check"></i></span>
+                                <span class="button-icon" aria-hidden="true"><i class="fas fa-calendar-check"></i></span>
                             </button>
                             <p class="form-disclaimer">We'll follow up within 24 hours to confirm your appointment. Your information remains private and will never be shared.</p>
                         </form>
