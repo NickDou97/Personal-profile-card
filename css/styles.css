@@ -79,17 +79,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 h2 {
-    font-size: clamp(1.7rem, 3vw, 2.25rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
 }
 
 h3 {
-    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.4;
 }
 
 h4 {
@@ -105,15 +110,18 @@ p {
 
 /* Container and spacing improvements */
 .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 max(20px, 5%);
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 max(24px, 5%);
+    box-sizing: border-box;
 }
 
 section {
-    padding: 4rem 0;
     position: relative;
+    width: 100%;
+    padding: clamp(3rem, 8vh, 6rem) 0;
+    overflow: hidden;
 }
 
 /* Refined link styles */
@@ -196,6 +204,7 @@ a:hover {
     width: 100%;
     height: 100%;
     z-index: -5;
+    contain: content;
 }
 
 .neural-node {
@@ -355,8 +364,8 @@ a:hover {
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: minmax(min(100%, 500px), 1fr) minmax(min(100%, 500px), 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
 }
 
@@ -636,8 +645,9 @@ a:hover {
 
 .problem-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    width: 100%;
 }
 
 .problem-card {
@@ -1585,6 +1595,7 @@ footer {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
 }
 
 .scroll-observe.active {
@@ -1636,12 +1647,14 @@ footer {
         display: flex;
     }
     
-    .hero-container {
+    .hero-container,
+    .solution-layout {
         grid-template-columns: 1fr;
-        text-align: center;
     }
     
     .hero-text {
+        text-align: center;
+        max-width: 700px;
         margin: 0 auto;
     }
     
@@ -1664,13 +1677,18 @@ footer {
 }
 
 @media (max-width: 768px) {
-    section {
-        padding: 4rem 0;
+    .container {
+        padding: 0 16px;
     }
     
+    section {
+        padding: clamp(2rem, 6vh, 4rem) 0;
+    }
+    
+    .problem-grid,
     .services-container,
-    .problem-grid {
-        grid-template-columns: 1fr;
+    .testimonial-grid {
+        gap: 1rem;
     }
     
     .process-timeline:before {
@@ -1724,8 +1742,10 @@ footer {
     
     .hero-buttons {
         flex-direction: column;
+        gap: 1rem;
     }
     
+    .primary-button,
     .secondary-button {
         width: 100%;
     }
@@ -2036,9 +2056,9 @@ footer {
 
 .solution-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 0;
-    align-items: stretch;
+    grid-template-columns: minmax(min(100%, 400px), 1.5fr) minmax(min(100%, 300px), 1fr);
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
     background-color: var(--background-white);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
