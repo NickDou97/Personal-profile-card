@@ -2345,7 +2345,7 @@ footer {
     display: none;
 }
 
-/* Assessment Quiz Button - Refined */
+/* Assessment Quiz Button - Monochromatic & Personal */
 .assessment-quiz-button {
     display: flex;
     justify-content: center;
@@ -2362,7 +2362,7 @@ footer {
     right: 1rem;
     width: 40%;
     height: 40%;
-    background: linear-gradient(135deg, rgba(49, 130, 206, 0.03) 0%, rgba(49, 130, 206, 0.08) 100%);
+    background: linear-gradient(135deg, rgba(45, 55, 72, 0.03) 0%, rgba(45, 55, 72, 0.08) 100%);
     border-radius: 50%;
     z-index: 0;
     opacity: 0.6;
@@ -2374,7 +2374,7 @@ footer {
     justify-content: space-between;
     width: 100%;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(45, 55, 72, 0.04);
     border: 1px solid var(--border-light);
     border-radius: var(--border-radius-lg);
     color: var(--text-dark);
@@ -2392,7 +2392,7 @@ footer {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(90deg, transparent, var(--text-dark), transparent);
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -2400,7 +2400,7 @@ footer {
 .quiz-launch-btn:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(45, 55, 72, 0.06);
     border-color: var(--border-medium);
 }
 
@@ -2410,7 +2410,7 @@ footer {
 
 .quiz-launch-btn:hover .btn-arrow {
     transform: translateX(5px);
-    color: var(--accent-color);
+    color: var(--text-dark);
 }
 
 .btn-content {
@@ -2427,17 +2427,17 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px dashed var(--border-light);
+    background: rgba(45, 55, 72, 0.05);
+    border: 1px dashed var(--border-medium);
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 
 .quiz-launch-btn:hover .btn-icon {
-    color: var(--accent-color);
-    background: rgba(49, 130, 206, 0.05);
+    color: var(--text-dark);
+    background: rgba(45, 55, 72, 0.08);
     border-style: solid;
-    border-color: rgba(49, 130, 206, 0.2);
+    border-color: var(--border-medium);
 }
 
 .btn-text h4 {
@@ -2454,10 +2454,11 @@ footer {
     color: var(--text-medium);
     margin: 0;
     line-height: 1.5;
+    font-style: italic;
 }
 
 .quiz-launch-btn:hover .btn-text h4 {
-    color: var(--accent-color);
+    color: var(--text-dark);
 }
 
 .btn-arrow {
@@ -2475,7 +2476,7 @@ footer {
     left: -2px;
     width: calc(100% + 4px);
     height: calc(100% + 4px);
-    background: linear-gradient(135deg, var(--accent-color) 0%, transparent 80%);
+    background: linear-gradient(135deg, var(--text-dark) 0%, transparent 80%);
     border-radius: var(--border-radius-lg);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -2483,7 +2484,19 @@ footer {
 }
 
 .quiz-launch-btn:hover::before {
-    opacity: 0.1;
+    opacity: 0.05;
+}
+
+/* Personal touch elements */
+.quiz-launch-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(45, 55, 72, 0.08) 0%, transparent 70%);
+    opacity: 0.5;
 }
 
 /* Remove pulse animation for a cleaner look */
