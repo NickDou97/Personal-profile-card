@@ -2400,8 +2400,8 @@ footer {
     justify-content: space-between;
     width: 100%;
     padding: 2rem;
-    background: rgba(45, 55, 72, 0.04);
-    border: 1px solid var(--border-light);
+    background: rgba(45, 55, 72, 0.09);
+    border: 1px solid var(--border-medium);
     border-radius: var(--border-radius-lg);
     color: var(--text-dark);
     transition: all 0.3s ease;
@@ -2424,10 +2424,10 @@ footer {
 }
 
 .quiz-launch-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-md);
-    background: rgba(45, 55, 72, 0.06);
-    border-color: var(--border-medium);
+    background: rgba(45, 55, 72, 0.13);
+    border-color: var(--border-dark);
 }
 
 .quiz-launch-btn:hover::after {
@@ -2470,7 +2470,7 @@ footer {
     margin-bottom: 0.5rem;
     font-weight: 600;
     color: var(--text-dark);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     letter-spacing: -0.01em;
     transition: color 0.3s ease;
 }
