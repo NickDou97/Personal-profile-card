@@ -214,6 +214,16 @@ function setupAnimations() {
     // Add any other animations here as needed
 }
 
+// Initialize custom animations if their scripts are loaded
+function initCustomAnimations() {
+    // Check if the scripts are loaded and execute if available
+    if (typeof window.confettiManager !== 'undefined') {
+        console.log('Confetti animation loaded');
+    }
+    
+    // Add any animation resets or customizations here
+}
+
 // Initialize Everything for Solutions Section
 window.initSolutionsSection = function() {
     setupSolutionTabs();
@@ -266,6 +276,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Setup counter animations
     setupCounterAnimations();
+    
+    // Initialize custom animations
+    initCustomAnimations();
     
     // Initialize Solutions Section if it exists
     if (document.querySelector('.solutions-section')) {
