@@ -1,3 +1,4 @@
+/* Professional Monochrome Color Scheme */
 :root {
     /* Primary Colors */
     --primary-color: #2d3748;
@@ -13,11 +14,18 @@
     --accent-color: #3182ce;
     --accent-dark: #2c5282;
     --accent-light: #ebf8ff;
+    --accent-rgb: 49, 130, 206;
+    
+    /* Error Colors */
+    --error-color: #e53e3e;
+    --error-dark: #c53030;
     
     /* Success Color */
     --success-color: #68d391;
     
     /* Text Colors */
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
     --text-dark: #1a202c;
     --text-medium: #4a5568;
     --text-light: #718096;
