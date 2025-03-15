@@ -766,6 +766,248 @@ a:hover {
     box-shadow: 0 2px 6px rgba(94, 92, 222, 0.2);
 }
 
+/* Founder Story Section Styles */
+.founder-section {
+    background-color: var(--background-white);
+    position: relative;
+    overflow: hidden;
+    padding: clamp(4rem, 12vh, 8rem) 0;
+}
+
+.founder-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: center;
+}
+
+.founder-image {
+    display: flex;
+    justify-content: center;
+}
+
+.founder-photo-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.founder-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.founder-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/founder.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.85;
+}
+
+.founder-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-md);
+}
+
+.founder-badge i {
+    font-size: 1.1rem;
+}
+
+.founder-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.founder-text h3 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.founder-text p {
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.founder-text strong {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.achievements-container {
+    margin-top: 2rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-light);
+}
+
+.achievements-container h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-card {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-medium);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.achievement-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--border-radius-md);
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.achievement-content h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.achievement-content p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 4rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-box h3 {
+    color: white;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: 2rem;
+}
+
+.cta-box-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.cta-box .primary-button {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.cta-box .primary-button:hover {
+    background-color: var(--neutral-50);
+    color: var(--primary-dark);
+}
+
+.cta-box .button-icon {
+    color: var(--primary-color);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .founder-image {
+        order: 1;
+    }
+    
+    .founder-text {
+        order: 2;
+        text-align: center;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        max-width: 550px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .founder-photo-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .founder-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .cta-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .achievement-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+}
+
 /* Testimonials Section Styles */
 .testimonials-section {
     background-color: var(--background-light);
