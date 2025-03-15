@@ -572,3 +572,57 @@ function createNeuralNetworkAnimation() {
         }, 300);
     });
 }
+
+// Hero Terminal Animation
+function resetHeroAnimation() {
+    const codeLines = document.querySelectorAll('.hero-terminal .code-line');
+    codeLines.forEach(line => {
+        line.style.opacity = '0';
+        line.style.transform = 'translateX(-20px)';
+        void line.offsetWidth; // Trigger reflow
+        line.style.opacity = '';
+        line.style.transform = '';
+    });
+}
+
+function updateHeroScores() {
+    const score = Math.floor(Math.random() * 30) + 70; // Random score between 70-99
+    const leads = Math.floor(Math.random() * 15) + 15; // Random leads between 15-29
+    
+    const scoreElement = document.querySelector('.score-value');
+    const leadsElement = document.querySelector('.leads-value');
+    const statusElement = document.querySelector('.hero-terminal .process-badge.status-high');
+    
+    if (scoreElement) scoreElement.textContent = score;
+    if (leadsElement) leadsElement.textContent = leads;
+    
+    if (statusElement) {
+        if (score >= 90) {
+            statusElement.textContent = 'Premium';
+            statusElement.style.background = 'rgba(94, 234, 212, 0.2)';
+            statusElement.style.borderColor = 'rgba(94, 234, 212, 0.4)';
+        } else if (score >= 80) {
+            statusElement.textContent = 'High Value';
+            statusElement.style.background = 'rgba(56, 189, 248, 0.15)';
+            statusElement.style.borderColor = 'rgba(56, 189, 248, 0.3)';
+        } else {
+            statusElement.textContent = 'Qualified';
+            statusElement.style.background = 'rgba(45, 55, 72, 0.2)';
+            statusElement.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        }
+    }
+}
+
+// Start the hero animation loop
+let heroAnimationInterval = setInterval(() => {
+    resetHeroAnimation();
+    updateHeroScores();
+}, 8000); // Reset every 8 seconds
+
+// Initial update
+updateHeroScores();
+
+// Cleanup interval when page changes
+window.addEventListener('beforeunload', () => {
+    clearInterval(heroAnimationInterval);
+});
