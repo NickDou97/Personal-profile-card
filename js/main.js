@@ -626,3 +626,128 @@ updateHeroScores();
 window.addEventListener('beforeunload', () => {
     clearInterval(heroAnimationInterval);
 });
+
+// Form Validation and Character Count
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const messageTextarea = document.getElementById('message');
+    const characterCount = document.querySelector('.character-count .current');
+    
+    // Character count
+    if (messageTextarea && characterCount) {
+        messageTextarea.addEventListener('input', () => {
+            const current = messageTextarea.value.length;
+            const max = messageTextarea.getAttribute('maxlength');
+            characterCount.textContent = current;
+            
+            if (current >= max - 50) {
+                characterCount.parentElement.style.color = 'var(--error-color)';
+            } else {
+                characterCount.parentElement.style.color = 'var(--text-secondary)';
+            }
+        });
+    }
+    
+    // Form validation
+    if (form) {
+        const inputs = form.querySelectorAll('input, select, textarea');
+        
+        inputs.forEach(input => {
+            const errorMessage = input.nextElementSibling;
+            if (errorMessage && errorMessage.classList.contains('error-message')) {
+                input.addEventListener('invalid', (e) => {
+                    e.preventDefault();
+                    showError(input);
+                });
+                
+                input.addEventListener('input', () => {
+                    if (input.validity.valid) {
+                        hideError(input);
+                    } else {
+                        showError(input);
+                    }
+                });
+            }
+        });
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (form.checkValidity()) {
+                const submitButton = form.querySelector('.submit-button');
+                const originalText = submitButton.innerHTML;
+                
+                try {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitButton.disabled = true;
+                    
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) throw new Error('Submission failed');
+                    
+                    // Success
+                    submitButton.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
+                    submitButton.style.backgroundColor = 'var(--success-color)';
+                    form.reset();
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalText;
+                        submitButton.style.backgroundColor = '';
+                        submitButton.disabled = false;
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    submitButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error - Try Again';
+                    submitButton.style.backgroundColor = 'var(--error-color)';
+                    
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalText;
+                        submitButton.style.backgroundColor = '';
+                        submitButton.disabled = false;
+                    }, 3000);
+                }
+            } else {
+                // Show errors for all invalid fields
+                inputs.forEach(input => {
+                    if (!input.validity.valid) {
+                        showError(input);
+                    }
+                });
+            }
+        });
+    }
+});
+
+function showError(input) {
+    const errorMessage = input.nextElementSibling;
+    if (errorMessage && errorMessage.classList.contains('error-message')) {
+        let message = '';
+        
+        if (input.validity.valueMissing) {
+            message = 'This field is required';
+        } else if (input.validity.typeMismatch) {
+            message = `Please enter a valid ${input.type}`;
+        } else if (input.validity.patternMismatch) {
+            message = input.title || 'Please match the requested format';
+        } else if (input.validity.tooShort) {
+            message = `Must be at least ${input.getAttribute('minlength')} characters`;
+        } else if (input.validity.tooLong) {
+            message = `Must be no more than ${input.getAttribute('maxlength')} characters`;
+        }
+        
+        errorMessage.textContent = message;
+    }
+}
+
+function hideError(input) {
+    const errorMessage = input.nextElementSibling;
+    if (errorMessage && errorMessage.classList.contains('error-message')) {
+        errorMessage.textContent = '';
+    }
+}
