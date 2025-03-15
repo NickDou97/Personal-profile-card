@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Add HTML2Canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
     <style>
         :root {
             /* Primary Colors */
@@ -263,12 +266,13 @@
             background: rgba(56, 189, 248, 0.2);
         }
         
-        /* Radar Visualization */
+        /* Radar Visualization - Enhanced */
         .radar-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
+            position: relative;
         }
         
         .radar-chart {
@@ -276,6 +280,7 @@
             width: 350px;
             height: 350px;
             margin: 0 auto;
+            transition: all 0.3s ease;
         }
         
         .radar-bg {
@@ -285,7 +290,8 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(30, 41, 59, 0) 70%);
+            background: radial-gradient(circle, rgba(45, 55, 72, 0.05) 0%, rgba(30, 41, 59, 0) 70%);
+            animation: pulse 3s infinite ease-in-out;
         }
         
         .radar-circles {
@@ -298,8 +304,9 @@
         
         .radar-circle {
             position: absolute;
-            border: 1px solid rgba(94, 234, 212, 0.2);
+            border: 1px solid rgba(45, 55, 72, 0.2);
             border-radius: 50%;
+            transition: all 0.3s ease;
         }
         
         .radar-circle:nth-child(1) {
@@ -307,6 +314,7 @@
             left: 20%;
             width: 60%;
             height: 60%;
+            animation: rotate 20s linear infinite;
         }
         
         .radar-circle:nth-child(2) {
@@ -314,6 +322,7 @@
             left: 30%;
             width: 40%;
             height: 40%;
+            animation: rotate 15s linear infinite reverse;
         }
         
         .radar-circle:nth-child(3) {
@@ -321,6 +330,7 @@
             left: 40%;
             width: 20%;
             height: 20%;
+            animation: rotate 10s linear infinite;
         }
         
         .radar-axes {
@@ -337,24 +347,9 @@
             left: 50%;
             width: 50%;
             height: 1px;
-            background: rgba(94, 234, 212, 0.2);
+            background: rgba(45, 55, 72, 0.2);
             transform-origin: left center;
-        }
-        
-        .radar-axis:nth-child(1) {
-            transform: rotate(0deg);
-        }
-        
-        .radar-axis:nth-child(2) {
-            transform: rotate(90deg);
-        }
-        
-        .radar-axis:nth-child(3) {
-            transform: rotate(45deg);
-        }
-        
-        .radar-axis:nth-child(4) {
-            transform: rotate(135deg);
+            transition: all 0.3s ease;
         }
         
         .radar-labels {
@@ -367,33 +362,29 @@
         
         .radar-label {
             position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 0.875rem;
             color: var(--text-light);
             white-space: nowrap;
+            transition: all 0.3s ease;
         }
         
-        .radar-label:nth-child(1) {
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        .radar-label i {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
         }
         
-        .radar-label:nth-child(2) {
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
+        .radar-label:hover {
+            color: var(--text-white);
+            transform: translateY(-2px);
         }
         
-        .radar-label:nth-child(3) {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .radar-label:nth-child(4) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
+        .radar-label:hover i {
+            opacity: 1;
+            transform: scale(1.1);
         }
         
         .radar-plot {
@@ -413,8 +404,20 @@
             height: 80%;
             transform: translate(-50%, -50%);
             clip-path: polygon(50% 10%, 90% 50%, 50% 90%, 10% 50%);
-            background: rgba(94, 234, 212, 0.2);
-            border: 2px solid rgba(94, 234, 212, 0.7);
+            background: rgba(45, 55, 72, 0.1);
+            border: 2px solid rgba(45, 55, 72, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.02); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.5; }
         }
         
         /* Responsive adjustments */
@@ -571,10 +574,22 @@
                             <div class="radar-axis"></div>
                         </div>
                         <div class="radar-labels">
-                            <div class="radar-label">Start with AI in Mind</div>
-                            <div class="radar-label">Scale What You Know</div>
-                            <div class="radar-label">Broaden Your AI Skills</div>
-                            <div class="radar-label">Small Experiments & Steady Growth</div>
+                            <div class="radar-label" style="top: 0; left: 50%; transform: translateX(-50%);">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Start with AI in Mind</span>
+                            </div>
+                            <div class="radar-label" style="top: 50%; right: 0; transform: translateY(-50%);">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Scale What You Know</span>
+                            </div>
+                            <div class="radar-label" style="bottom: 0; left: 50%; transform: translateX(-50%);">
+                                <i class="fas fa-brain"></i>
+                                <span>Broaden Your AI Skills</span>
+                            </div>
+                            <div class="radar-label" style="top: 50%; left: 0; transform: translateY(-50%);">
+                                <i class="fas fa-flask"></i>
+                                <span>Small Experiments</span>
+                            </div>
                         </div>
                         <div class="radar-plot">
                             <div class="radar-shape"></div>
@@ -663,6 +678,42 @@
         
         // Initialize the radar chart
         updateRadarChart();
+        
+        // Add Export functionality to the script section
+        const exportBtn = document.querySelector('.export-btn');
+        exportBtn.addEventListener('click', async function() {
+            const radarChart = document.querySelector('.radar-chart');
+            
+            // Show loading state
+            exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+            exportBtn.style.pointerEvents = 'none';
+            
+            try {
+                // Get assessment name
+                const assessmentName = document.querySelector('.custom-input').value || 'ai-maturity-assessment';
+                
+                // Capture the radar chart
+                const canvas = await html2canvas(radarChart, {
+                    backgroundColor: null,
+                    scale: 2, // Higher resolution
+                    logging: false,
+                    useCORS: true
+                });
+                
+                // Convert to PNG and download
+                const link = document.createElement('a');
+                link.download = `${assessmentName.toLowerCase().replace(/\s+/g, '-')}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (error) {
+                console.error('Export failed:', error);
+                alert('Export failed. Please try again.');
+            } finally {
+                // Restore button state
+                exportBtn.innerHTML = '<i class="fas fa-file-export"></i> Export as PNG';
+                exportBtn.style.pointerEvents = 'auto';
+            }
+        });
     </script>
 </body>
 </html> 
