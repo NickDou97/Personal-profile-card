@@ -1,30 +1,320 @@
-// Setup Counter Animations
-function setupCounterAnimations() {
-    const counters = document.querySelectorAll('.counter');
+// Main JavaScript for ClarityAI - Monochromatic Theme
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize components
+    initNavigation();
+    initAnimations();
+    initFormHandling();
+    initCounters();
+    initFaqAccordions();
     
-    // Function to animate counter
-    function animateCounter(counter) {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
-        const stepTime = 50; // update every 50ms
-        const totalSteps = duration / stepTime;
-        const stepValue = target / totalSteps;
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += stepValue;
-            if (current > target) {
-                counter.textContent = target;
-                return;
-            }
-            counter.textContent = Math.floor(current);
-            setTimeout(updateCounter, stepTime);
-        };
-        
-        updateCounter();
+    // Initialize tabs if solution tabs exist
+    if (document.querySelector('.tab-navigation')) {
+        initTabs();
     }
     
-    // Setup Intersection Observer to trigger counter when visible
+    // Create and enable dark mode toggle
+    createDarkModeToggle();
+    
+    // Initialize neural network animation
+    createNeuralNetworkAnimation();
+});
+
+// Navigation functionality
+function initNavigation() {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Update aria-expanded attribute
+            const expanded = navLinks.classList.contains('active');
+            this.setAttribute('aria-expanded', expanded);
+        });
+        
+        // Close menu when link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+    
+    // Scroll handling for navbar
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                
+                window.scrollTo({
+                    top: target.offsetTop - 80, // Offset for fixed header
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Animation functionality
+function initAnimations() {
+    // Fade-in animations on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    if (fadeElements.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+    
+    // Hero terminal animation
+    animateTerminal();
+}
+
+// Terminal animation in hero section
+function animateTerminal() {
+    const codeLines = document.querySelectorAll('.code-line');
+    if (!codeLines.length) return;
+    
+    // Reset animations
+    function resetAnimation() {
+        codeLines.forEach(line => {
+            line.style.opacity = '0';
+            line.style.transform = 'translateX(-10px)';
+            void line.offsetWidth; // Trigger reflow
+            
+            // Remove and reapply animation style
+            line.style.animation = 'none';
+            void line.offsetWidth; // Trigger reflow
+            line.style.animation = '';
+        });
+    }
+    
+    // Update dynamic data
+    function updateTerminalData() {
+        const scoreElement = document.querySelector('.score-value');
+        const leadsElement = document.querySelector('.leads-value');
+        
+        if (scoreElement) {
+            const score = Math.floor(Math.random() * 20) + 80; // 80-99
+            scoreElement.textContent = score;
+            
+            // Update status badge based on score
+            const statusBadge = document.querySelector('.status-high');
+            if (statusBadge) {
+                if (score >= 90) {
+                    statusBadge.textContent = 'Premium';
+                } else if (score >= 85) {
+                    statusBadge.textContent = 'High Value';
+                } else {
+                    statusBadge.textContent = 'Qualified';
+                }
+            }
+        }
+        
+        if (leadsElement) {
+            const leads = Math.floor(Math.random() * 15) + 20; // 20-34
+            leadsElement.textContent = leads;
+        }
+    }
+    
+    // Initial update
+    updateTerminalData();
+    
+    // Set interval for animation cycle
+    const terminalInterval = setInterval(() => {
+        resetAnimation();
+        updateTerminalData();
+    }, 8000); // Reset every 8 seconds
+    
+    // Cleanup on page change
+    window.addEventListener('beforeunload', () => {
+        clearInterval(terminalInterval);
+    });
+}
+
+// Form handling functionality
+function initFormHandling() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        // Character counter for textareas
+        const textareas = form.querySelectorAll('textarea[maxlength]');
+        textareas.forEach(textarea => {
+            const counter = textarea.parentElement.querySelector('.character-count .current');
+            if (counter) {
+                textarea.addEventListener('input', () => {
+                    const current = textarea.value.length;
+                    const max = textarea.getAttribute('maxlength');
+                    counter.textContent = current;
+                    
+                    // Style counter when approaching limit
+                    if (current >= max - 50) {
+                        counter.parentElement.style.color = 'var(--error-color)';
+                    } else {
+                        counter.parentElement.style.color = '';
+                    }
+                });
+            }
+        });
+        
+        // Form validation
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            let valid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    valid = false;
+                    showError(field, 'This field is required');
+                } else if (field.type === 'email' && !isValidEmail(field.value)) {
+                    valid = false;
+                    showError(field, 'Please enter a valid email address');
+                } else {
+                    clearError(field);
+                }
+            });
+            
+            // If valid, simulate form submission
+            if (valid) {
+                const submitBtn = form.querySelector('[type="submit"]');
+                if (submitBtn) {
+                    // Show loading state
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate server response (would be replaced with actual AJAX)
+                    setTimeout(() => {
+                        // Show success state
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
+                        submitBtn.classList.add('success');
+                        
+                        // Reset form
+                        form.reset();
+                        
+                        // Trigger success message or redirect
+                        showFormSuccess(form);
+                        
+                        // Reset button after delay
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('success');
+                        }, 3000);
+                    }, 1500);
+                }
+            }
+        });
+    });
+    
+    // Helper functions for form validation
+    function isValidEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+    
+    function showError(field, message) {
+        const errorElement = field.nextElementSibling;
+        if (errorElement && errorElement.classList.contains('error-message')) {
+            errorElement.textContent = message;
+            field.classList.add('error');
+        }
+    }
+    
+    function clearError(field) {
+        const errorElement = field.nextElementSibling;
+        if (errorElement && errorElement.classList.contains('error-message')) {
+            errorElement.textContent = '';
+            field.classList.remove('error');
+        }
+    }
+    
+    function showFormSuccess(form) {
+        // For contact form, show a success message
+        if (form.id === 'contact-form') {
+            const formContainer = form.closest('.contact-form-container');
+            if (formContainer) {
+                const successHtml = `
+                    <div class="form-success">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Thank you!</h3>
+                        <p>We've received your request and will be in touch within 24 hours to schedule your strategy call.</p>
+                    </div>
+                `;
+                
+                // Replace form with success message
+                form.style.opacity = '0';
+                setTimeout(() => {
+                    formContainer.innerHTML = successHtml;
+                    // Trigger confetti if available
+                    if (typeof triggerConfetti === 'function') {
+                        triggerConfetti();
+                    }
+                }, 300);
+            }
+        }
+        
+        // For newsletter form
+        if (form.classList.contains('signup-form')) {
+            const parent = form.parentElement;
+            if (parent) {
+                const email = form.querySelector('input[type="email"]').value;
+                const successHtml = `
+                    <div class="newsletter-success">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>You're on the list!</h3>
+                        <p>We've added ${email} to our newsletter. Watch for AI insights in your inbox soon!</p>
+                    </div>
+                `;
+                
+                // Replace form with success message
+                form.style.opacity = '0';
+                setTimeout(() => {
+                    parent.innerHTML = successHtml;
+                }, 300);
+            }
+        }
+    }
+}
+
+// Counter animation
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
     if (counters.length) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -39,9 +329,305 @@ function setupCounterAnimations() {
             observer.observe(counter);
         });
     }
+    
+    function animateCounter(counter) {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // 2 seconds
+        const stepTime = 20; // update every 20ms
+        const steps = duration / stepTime;
+        const increment = target / steps;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            
+            if (current >= target) {
+                counter.textContent = target;
+                clearInterval(timer);
+                return;
+            }
+            
+            counter.textContent = Math.round(current);
+        }, stepTime);
+    }
 }
 
-// Setup Animation Toggle
+// FAQ accordions
+function initFaqAccordions() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (question && answer) {
+            // Set initial state - hide answers
+            answer.style.display = 'none';
+            
+            // Add click handler
+            question.addEventListener('click', () => {
+                // Toggle this answer
+                const isOpen = answer.style.display === 'block';
+                
+                // Toggle icon
+                const icon = question.querySelector('i');
+                if (icon) {
+                    icon.className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+                }
+                
+                // Toggle answer with smooth animation
+                if (isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    setTimeout(() => {
+                        answer.style.maxHeight = '0';
+                        setTimeout(() => {
+                            answer.style.display = 'none';
+                        }, 300);
+                    }, 10);
+                } else {
+                    answer.style.display = 'block';
+                    answer.style.maxHeight = '0';
+                    setTimeout(() => {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }, 10);
+                }
+            });
+        }
+    });
+}
+
+// Tabs functionality
+function initTabs() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Set initial state - first tab active
+    if (tabButtons.length && tabContents.length) {
+        tabButtons[0].classList.add('active');
+        tabContents[0].classList.add('active');
+        
+        // Add click handlers
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get tab ID
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    // Reset animation if needed
+                    content.style.animation = 'none';
+                    void content.offsetWidth;
+                    content.style.animation = '';
+                });
+                
+                // Add active class to clicked tab
+                button.classList.add('active');
+                
+                // Show corresponding tab content
+                const activeContent = document.getElementById(`${tabId}-tab`);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
+            });
+        });
+    }
+}
+
+// Dark mode toggle
+function createDarkModeToggle() {
+    // Only create if it doesn't exist already
+    if (!document.querySelector('.theme-toggle')) {
+        // Create toggle button
+        const toggle = document.createElement('button');
+        toggle.className = 'theme-toggle';
+        toggle.setAttribute('aria-label', 'Toggle dark mode');
+        toggle.innerHTML = '<i class="fas fa-moon"></i>';
+        
+        // Check user preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply theme based on preference or saved value
+        if (savedTheme === 'dark' || (prefersDark && !savedTheme)) {
+            document.body.classList.add('dark-mode');
+            toggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Add click handler
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                toggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Add to document
+        document.body.appendChild(toggle);
+    }
+}
+
+// Neural Network Animation 
+function createNeuralNetworkAnimation() {
+    const container = document.getElementById('neural-network');
+    if (!container) return;
+    
+    // Clear existing content
+    container.innerHTML = '';
+    
+    // Get container dimensions
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    
+    // Calculate node count based on screen size
+    const nodeCount = Math.min(30, Math.floor(width * height / 15000));
+    const nodes = [];
+    const connections = [];
+    const connectionDistance = Math.min(200, width * 0.2);
+    
+    // Create nodes
+    for (let i = 0; i < nodeCount; i++) {
+        const node = document.createElement('div');
+        node.className = 'neural-node';
+        
+        // Random position
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        
+        // Random size between 3 and 6px
+        const size = Math.random() * 3 + 3;
+        
+        // Movement speed (slower for smoother animation)
+        const speedX = (Math.random() - 0.5) * 0.2;
+        const speedY = (Math.random() - 0.5) * 0.2;
+        
+        // Set node style
+        node.style.left = x + 'px';
+        node.style.top = y + 'px';
+        node.style.width = size + 'px';
+        node.style.height = size + 'px';
+        
+        // Set opacity based on size for depth effect
+        node.style.opacity = (size - 3) / 3 * 0.5 + 0.3;
+        
+        // Apply pulsing animation to some nodes
+        if (Math.random() > 0.7) {
+            node.style.animation = `pulse ${2 + Math.random() * 2}s infinite`;
+            node.style.animationDelay = `${Math.random() * 2}s`;
+        }
+        
+        // Add to document and store data
+        container.appendChild(node);
+        nodes.push({
+            element: node,
+            x, y, size, speedX, speedY
+        });
+    }
+    
+    // Create connections between nodes
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            // Calculate distance between nodes
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Only create connections between close nodes
+            if (distance < connectionDistance) {
+                const connection = document.createElement('div');
+                connection.className = 'neural-connection';
+                
+                // Set initial position and opacity based on distance
+                const opacity = 1 - (distance / connectionDistance);
+                connection.style.opacity = opacity * 0.3;
+                
+                container.appendChild(connection);
+                
+                connections.push({
+                    element: connection,
+                    from: nodes[i],
+                    to: nodes[j],
+                    opacity
+                });
+            }
+        }
+    }
+    
+    // Animation function
+    let animationFrameId;
+    function animate() {
+        // Request next frame
+        animationFrameId = requestAnimationFrame(animate);
+        
+        // Update node positions
+        nodes.forEach(node => {
+            node.x += node.speedX;
+            node.y += node.speedY;
+            
+            // Bounce off edges
+            if (node.x <= 0 || node.x >= width) node.speedX *= -1;
+            if (node.y <= 0 || node.y >= height) node.speedY *= -1;
+            
+            // Update position
+            node.element.style.left = node.x + 'px';
+            node.element.style.top = node.y + 'px';
+        });
+        
+        // Update connections
+        connections.forEach(conn => {
+            const dx = conn.to.x - conn.from.x;
+            const dy = conn.to.y - conn.from.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // Update connection only if nodes are close enough
+            if (distance < connectionDistance) {
+                // Calculate connection opacity based on distance
+                const opacity = (1 - (distance / connectionDistance)) * 0.3;
+                conn.element.style.opacity = opacity;
+                
+                // Calculate width (length of connection)
+                conn.element.style.width = distance + 'px';
+                
+                // Position at first node
+                conn.element.style.left = conn.from.x + 'px';
+                conn.element.style.top = conn.from.y + 'px';
+                
+                // Calculate angle for rotation
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                conn.element.style.transform = `rotate(${angle}deg)`;
+                
+                // Show connection
+                conn.element.style.display = 'block';
+            } else {
+                // Hide connection if nodes too far apart
+                conn.element.style.display = 'none';
+            }
+        });
+    }
+    
+    // Start animation
+    animate();
+    
+    // Handle page visibility changes to improve performance
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            cancelAnimationFrame(animationFrameId);
+        } else {
+            animate();
+        }
+    });
+    
+    // Setup animation toggle
+    setupAnimationToggle();
+}
+
+// Setup animation toggle
 function setupAnimationToggle() {
     const toggleBtn = document.getElementById('toggle-animation');
     const neuralNetwork = document.getElementById('neural-network');
@@ -54,15 +640,16 @@ function setupAnimationToggle() {
         if (animationDisabled) {
             neuralNetwork.style.display = 'none';
             toggleBtn.classList.add('disabled');
-            toggleBtn.title = 'Enable Animation';
+            toggleBtn.title = 'Enable Background Animation';
         }
         
+        // Add click handler
         toggleBtn.addEventListener('click', function() {
             if (neuralNetwork.style.display === 'none') {
                 // Enable animation
                 neuralNetwork.style.display = 'block';
                 toggleBtn.classList.remove('disabled');
-                toggleBtn.title = 'Disable Animation';
+                toggleBtn.title = 'Disable Background Animation';
                 localStorage.setItem('animation-disabled', 'false');
                 
                 // Restart animation
@@ -71,696 +658,130 @@ function setupAnimationToggle() {
                 // Disable animation
                 neuralNetwork.style.display = 'none';
                 toggleBtn.classList.add('disabled');
-                toggleBtn.title = 'Enable Animation';
+                toggleBtn.title = 'Enable Background Animation';
                 localStorage.setItem('animation-disabled', 'true');
                 
                 // Clear all animation nodes
-                while (neuralNetwork.firstChild) {
-                    neuralNetwork.removeChild(neuralNetwork.firstChild);
-                }
+                neuralNetwork.innerHTML = '';
             }
         });
     }
 }
 
-// Solutions Section Tab Functionality
-function setupSolutionTabs() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    if (tabButtons.length) {
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and tabs
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                // Show corresponding tab content
-                const tabId = button.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
-                
-                // Reset and restart animations
-                setupAnimations();
-            });
-        });
-    }
-}
-
-// Setup Workflow Animation
-function setupWorkflowAnimation() {
-    const workflowSteps = document.querySelectorAll('.workflow-step');
-    const progressBar = document.querySelector('.progress-bar');
-    
-    if (workflowSteps.length && progressBar) {
-        let currentStep = 0;
-        
-        // Reset all steps first
-        workflowSteps.forEach(step => step.classList.remove('active'));
-        
-        // Set the first step as active initially
-        workflowSteps[0].classList.add('active');
-        progressBar.style.width = '20%';
-        
-        // Start animation cycle
-        const animateWorkflow = () => {
-            currentStep = (currentStep + 1) % workflowSteps.length;
-            
-            // Update active step
-            workflowSteps.forEach(step => step.classList.remove('active'));
-            workflowSteps[currentStep].classList.add('active');
-            
-            // Update progress bar
-            progressBar.style.width = `${(currentStep + 1) * (100 / workflowSteps.length)}%`;
-        };
-        
-        // Set interval for animation, but clear any existing interval first
-        if (window.workflowInterval) clearInterval(window.workflowInterval);
-        window.workflowInterval = setInterval(animateWorkflow, 2500);
-    }
-}
-
-// Setup Data Points Animation
-function setupDataAnimation() {
-    const dataPoints = document.querySelectorAll('.data-point');
-    const dataContainer = document.querySelector('.data-animation');
-    const connectionsContainer = document.querySelector('.data-connections');
-    
-    if (dataPoints.length && dataContainer && connectionsContainer) {
-        // Clear existing connections first
-        connectionsContainer.innerHTML = '';
-        
-        // Position data points randomly
-        dataPoints.forEach((point, index) => {
-            const x = 10 + (Math.random() * 80); // Keep within 10-90% of container width
-            const y = 10 + (Math.random() * 80); // Keep within 10-90% of container height
-            
-            point.style.left = `${x}%`;
-            point.style.top = `${y}%`;
-            
-            // Add subtle animation
-            point.style.animation = `pulse ${2 + Math.random() * 2}s infinite`;
-            point.style.animationDelay = `${Math.random() * 2}s`;
-        });
-        
-        // Create connections between points (not all, just some close ones)
-        for (let i = 0; i < dataPoints.length; i++) {
-            const point1 = dataPoints[i].getBoundingClientRect();
-            const point1CenterX = point1.left + point1.width / 2;
-            const point1CenterY = point1.top + point1.height / 2;
-            
-            for (let j = i + 1; j < dataPoints.length; j++) {
-                const point2 = dataPoints[j].getBoundingClientRect();
-                const point2CenterX = point2.left + point2.width / 2;
-                const point2CenterY = point2.top + point2.height / 2;
-                
-                // Calculate distance between points
-                const dx = point2CenterX - point1CenterX;
-                const dy = point2CenterY - point1CenterY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                // Only connect close points (adjust threshold as needed)
-                if (distance < 100) {
-                    const connection = document.createElement('div');
-                    connection.className = 'data-connection';
-                    connection.style.position = 'absolute';
-                    connection.style.height = '1px';
-                    connection.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-                    
-                    // Position and rotate the connection line
-                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                    const length = distance;
-                    
-                    connection.style.width = `${length}px`;
-                    connection.style.left = `${point1CenterX - dataContainer.getBoundingClientRect().left}px`;
-                    connection.style.top = `${point1CenterY - dataContainer.getBoundingClientRect().top}px`;
-                    connection.style.transform = `rotate(${angle}deg)`;
-                    connection.style.transformOrigin = 'left center';
-                    
-                    connectionsContainer.appendChild(connection);
-                }
-            }
-        }
-    }
-}
-
-// Setup All Animations
-function setupAnimations() {
-    setupWorkflowAnimation();
-    setupDataAnimation();
-    
-    // Add any other animations here as needed
-}
-
-// Initialize custom animations if their scripts are loaded
-function initCustomAnimations() {
-    // Check if the scripts are loaded and execute if available
-    if (typeof window.confettiManager !== 'undefined') {
-        console.log('Confetti animation loaded');
+// Confetti Animation for Form Success
+function triggerConfetti(options = {}) {
+    // Skip animation if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
     }
     
-    // Add any animation resets or customizations here
-}
-
-// Initialize Everything for Solutions Section
-window.initSolutionsSection = function() {
-    setupSolutionTabs();
-    setupAnimations();
+    // Create canvas for animation
+    const canvas = document.createElement('canvas');
+    canvas.id = 'confetti-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    document.body.appendChild(canvas);
     
-    // Add solutions section to the existing scroll observer
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                
-                // If this is one of our animation containers, reset animations
-                if (entry.target.closest('.tab-content')) {
-                    setupAnimations();
-                }
-                
-                scrollObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+    // Set canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     
-    // Observe all scroll elements in the solutions section
-    document.querySelectorAll('.solutions-section .scroll-observe').forEach(el => {
-        scrollObserver.observe(el);
-    });
-};
-
-// Main JavaScript file for Clarity AI Website
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    setupMobileMenu();
+    // Get context
+    const ctx = canvas.getContext('2d');
     
-    // Neural Network Animation
-    createNeuralNetworkAnimation();
+    // Default options
+    const settings = {
+        particleCount: options.particleCount || 100,
+        startVelocity: options.startVelocity || 30,
+        spread: options.spread || 70,
+        origin: options.origin || { x: 0.5, y: 0.5 },
+        gravity: options.gravity || 1,
+        ticks: options.ticks || 200,
+        colors: options.colors || ['#5E5CDE', '#8684FF', '#7B79E8', '#4946D1', '#E8E8FF']
+    };
     
-    // Form Handling
-    setupFormHandling();
+    // Particles array
+    const particles = [];
     
-    // Initialize scroll animations
-    initScrollAnimations();
-    
-    // FAQ Toggle Functionality
-    setupFaqToggles();
-    
-    // Smooth scrolling for internal links
-    setupSmoothScrolling();
-    
-    // Setup animation toggle
-    setupAnimationToggle();
-    
-    // Setup counter animations
-    setupCounterAnimations();
-    
-    // Initialize custom animations
-    initCustomAnimations();
-    
-    // Initialize Solutions Section if it exists
-    if (document.querySelector('.solutions-section')) {
-        window.initSolutionsSection();
-    }
-});
-
-// Mobile Menu Setup
-function setupMobileMenu() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking a link
-        const navItems = navLinks.querySelectorAll('a');
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    }
-}
-
-// Form Handling Setup
-function setupFormHandling() {
-    // Newsletter signup form
-    const signupForm = document.querySelector('.signup-form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Create success message
-            const successMsg = document.createElement('div');
-            successMsg.className = 'form-success';
-            successMsg.innerHTML = `<i class="fas fa-check-circle"></i> Thank you for subscribing with: ${email}`;
-            
-            // Replace form with success message
-            this.innerHTML = '';
-            this.appendChild(successMsg);
+    // Create particles
+    for (let i = 0; i < settings.particleCount; i++) {
+        particles.push({
+            x: settings.origin.x,
+            y: settings.origin.y,
+            color: settings.colors[Math.floor(Math.random() * settings.colors.length)],
+            size: Math.random() * 10 + 5,
+            velocity: {
+                x: (Math.random() - 0.5) * settings.spread,
+                y: (Math.random() * -settings.startVelocity) - 10
+            },
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 5,
+            opacity: 1,
+            shape: Math.random() > 0.5 ? 'circle' : 'rect'
         });
     }
     
-    // Contact form
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = this.querySelector('#name').value;
-            const email = this.querySelector('#email').value;
-            const company = this.querySelector('#company').value;
-            const role = this.querySelector('#role').value;
-            const message = this.querySelector('#message').value;
-            
-            // Simple form validation
-            if (!name || !email || !company || !role) {
-                alert('Please fill out all required fields.');
-                return;
-            }
-            
-            // Create success message
-            const formContainer = this.parentElement;
-            formContainer.innerHTML = `
-                <div class="form-success">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Thank you for your interest!</h3>
-                    <p>We've received your request and will be in touch within 24 hours to schedule your strategy call.</p>
-                    <p>A confirmation email has been sent to ${email}.</p>
-                </div>
-            `;
-        });
-    }
-}
-
-// Scroll Animation Setup
-function initScrollAnimations() {
-    const scrollElements = document.querySelectorAll('.scroll-observe');
+    // Remaining ticks
+    let tick = 0;
     
-    if (scrollElements.length) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+    // Animation function
+    function animate() {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        scrollElements.forEach(el => {
-            observer.observe(el);
-        });
-    }
-}
-
-// FAQ Toggle Setup
-function setupFaqToggles() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    if (faqQuestions.length) {
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
-                // Toggle answer visibility
-                if (answer.style.display === 'block') {
-                    answer.style.display = 'none';
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                } else {
-                    answer.style.display = 'block';
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                }
-            });
-        });
-        
-        // Initialize: Hide all answers initially
-        document.querySelectorAll('.faq-answer').forEach(answer => {
-            answer.style.display = 'none';
-        });
-    }
-}
-
-// Smooth Scrolling for Internal Links
-function setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+        // Update particles
+        particles.forEach(p => {
+            // Update position
+            p.x += p.velocity.x * 0.01;
+            p.y += p.velocity.y * 0.01;
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // Apply gravity
+            p.velocity.y += settings.gravity * 0.1;
             
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Offset for fixed header
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// Neural Network Animation 
-function createNeuralNetworkAnimation() {
-    const container = document.getElementById('neural-network');
-    if (!container) return;
-    
-    // Performance optimization - reduce the number of nodes and connections
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-    const nodeCount = Math.min(20, Math.floor(width * height / 20000)); // Reduced node count
-    const nodes = [];
-    const connections = [];
-    const connectionDistance = Math.min(150, width * 0.15); 
-    
-    // Create nodes
-    for (let i = 0; i < nodeCount; i++) {
-        const node = document.createElement('div');
-        node.className = 'neural-node';
-        
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-        const size = Math.random() * 4 + 2;
-        const speedX = (Math.random() - 0.5) * 0.3; // Slower movement
-        const speedY = (Math.random() - 0.5) * 0.3; // Slower movement
-        
-        node.style.left = x + 'px';
-        node.style.top = y + 'px';
-        node.style.width = size + 'px';
-        node.style.height = size + 'px';
-        node.style.opacity = Math.random() * 0.5 + 0.3;
-        
-        container.appendChild(node);
-        
-        nodes.push({
-            element: node,
-            x, y, size, speedX, speedY
-        });
-    }
-    
-    // Create connections (significantly reduced for performance)
-    const maxConnections = Math.min(nodeCount * 2, 30); // Much fewer connections
-    let connectionCount = 0;
-    
-    for (let i = 0; i < nodeCount && connectionCount < maxConnections; i++) {
-        // Only connect to a few nearby nodes
-        for (let j = i + 1; j < Math.min(i + 4, nodeCount) && connectionCount < maxConnections; j++) {
-            const connection = document.createElement('div');
-            connection.className = 'neural-connection';
-            container.appendChild(connection);
+            // Update rotation
+            p.rotation += p.rotationSpeed;
             
-            connections.push({
-                element: connection,
-                from: nodes[i],
-                to: nodes[j]
-            });
+            // Reduce opacity based on position
+            p.opacity = Math.max(0, p.opacity - 0.005);
             
-            connectionCount++;
-        }
-    }
-    
-    // Animation loop with performance optimization
-    let animationFrameId;
-    let lastTimestamp = 0;
-    const fps = 20; // Reduced FPS for better performance
-    const interval = 1000 / fps;
-    let isScrolling = false;
-    
-    // Pause animation during scroll
-    window.addEventListener('scroll', function() {
-        isScrolling = true;
-        clearTimeout(scrollTimeout);
-        
-        const scrollTimeout = setTimeout(function() {
-            isScrolling = false;
-        }, 200);
-    });
-    
-    function animate(timestamp) {
-        animationFrameId = requestAnimationFrame(animate);
-        
-        // Skip frames if scrolling or to maintain desired FPS
-        if (isScrolling || timestamp - lastTimestamp < interval) return;
-        lastTimestamp = timestamp;
-        
-        // Update node positions
-        nodes.forEach(node => {
-            node.x += node.speedX;
-            node.y += node.speedY;
+            // Draw particle
+            ctx.save();
+            ctx.translate(p.x * canvas.width, p.y * canvas.height);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.globalAlpha = p.opacity;
+            ctx.fillStyle = p.color;
             
-            // Bounce off edges
-            if (node.x <= 0 || node.x >= width) node.speedX *= -1;
-            if (node.y <= 0 || node.y >= height) node.speedY *= -1;
-            
-            node.element.style.left = node.x + 'px';
-            node.element.style.top = node.y + 'px';
-        });
-        
-        // Update connections
-        connections.forEach(conn => {
-            const dx = conn.from.x - conn.to.x;
-            const dy = conn.from.y - conn.to.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < connectionDistance) {
-                const opacity = 1 - (distance / connectionDistance);
-                
-                const centerX = (conn.from.x + conn.to.x) / 2;
-                const centerY = (conn.from.y + conn.to.y) / 2;
-                
-                conn.element.style.width = distance + 'px';
-                conn.element.style.left = centerX + 'px';
-                conn.element.style.top = centerY + 'px';
-                
-                // Calculate angle for rotation
-                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                conn.element.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-                conn.element.style.opacity = opacity * 0.5;
-                conn.element.style.display = 'block';
+            if (p.shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                ctx.fill();
             } else {
-                conn.element.style.display = 'none';
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
             }
+            
+            ctx.restore();
         });
+        
+        // Increment tick
+        tick++;
+        
+        // Continue animation if ticks remaining and at least one visible particle
+        if (tick < settings.ticks && particles.some(p => p.opacity > 0)) {
+            requestAnimationFrame(animate);
+        } else {
+            // Remove canvas when done
+            canvas.remove();
+        }
     }
     
     // Start animation
-    animate(0);
-    
-    // Cleanup on page visibility change to save resources
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            cancelAnimationFrame(animationFrameId);
-        } else {
-            animate(0);
-        }
-    });
-    
-    // Resize handler
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        // Debounce resize handler
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Clear existing animation
-            cancelAnimationFrame(animationFrameId);
-            
-            // Clear existing nodes and connections
-            while (container.firstChild) {
-                container.removeChild(container.firstChild);
-            }
-            
-            // Reinitialize animation
-            createNeuralNetworkAnimation();
-        }, 300);
-    });
+    requestAnimationFrame(animate);
 }
 
-// Hero Terminal Animation
-function resetHeroAnimation() {
-    const codeLines = document.querySelectorAll('.hero-terminal .code-line');
-    codeLines.forEach(line => {
-        line.style.opacity = '0';
-        line.style.transform = 'translateX(-20px)';
-        void line.offsetWidth; // Trigger reflow
-        line.style.opacity = '';
-        line.style.transform = '';
-    });
-}
-
-function updateHeroScores() {
-    const score = Math.floor(Math.random() * 30) + 70; // Random score between 70-99
-    const leads = Math.floor(Math.random() * 15) + 15; // Random leads between 15-29
-    
-    const scoreElement = document.querySelector('.score-value');
-    const leadsElement = document.querySelector('.leads-value');
-    const statusElement = document.querySelector('.hero-terminal .process-badge.status-high');
-    
-    if (scoreElement) scoreElement.textContent = score;
-    if (leadsElement) leadsElement.textContent = leads;
-    
-    if (statusElement) {
-        if (score >= 90) {
-            statusElement.textContent = 'Premium';
-            statusElement.style.background = 'rgba(94, 234, 212, 0.2)';
-            statusElement.style.borderColor = 'rgba(94, 234, 212, 0.4)';
-        } else if (score >= 80) {
-            statusElement.textContent = 'High Value';
-            statusElement.style.background = 'rgba(56, 189, 248, 0.15)';
-            statusElement.style.borderColor = 'rgba(56, 189, 248, 0.3)';
-        } else {
-            statusElement.textContent = 'Qualified';
-            statusElement.style.background = 'rgba(45, 55, 72, 0.2)';
-            statusElement.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-        }
-    }
-}
-
-// Start the hero animation loop
-let heroAnimationInterval = setInterval(() => {
-    resetHeroAnimation();
-    updateHeroScores();
-}, 8000); // Reset every 8 seconds
-
-// Initial update
-updateHeroScores();
-
-// Cleanup interval when page changes
-window.addEventListener('beforeunload', () => {
-    clearInterval(heroAnimationInterval);
-});
-
-// Form Validation and Character Count
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
-    const messageTextarea = document.getElementById('message');
-    const characterCount = document.querySelector('.character-count .current');
-    
-    // Character count
-    if (messageTextarea && characterCount) {
-        messageTextarea.addEventListener('input', () => {
-            const current = messageTextarea.value.length;
-            const max = messageTextarea.getAttribute('maxlength');
-            characterCount.textContent = current;
-            
-            if (current >= max - 50) {
-                characterCount.parentElement.style.color = 'var(--error-color)';
-            } else {
-                characterCount.parentElement.style.color = 'var(--text-secondary)';
-            }
-        });
-    }
-    
-    // Form validation
-    if (form) {
-        const inputs = form.querySelectorAll('input, select, textarea');
-        
-        inputs.forEach(input => {
-            const errorMessage = input.nextElementSibling;
-            if (errorMessage && errorMessage.classList.contains('error-message')) {
-                input.addEventListener('invalid', (e) => {
-                    e.preventDefault();
-                    showError(input);
-                });
-                
-                input.addEventListener('input', () => {
-                    if (input.validity.valid) {
-                        hideError(input);
-                    } else {
-                        showError(input);
-                    }
-                });
-            }
-        });
-        
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            if (form.checkValidity()) {
-                const submitButton = form.querySelector('.submit-button');
-                const originalText = submitButton.innerHTML;
-                
-                try {
-                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    submitButton.disabled = true;
-                    
-                    const formData = new FormData(form);
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData
-                    });
-                    
-                    if (!response.ok) throw new Error('Submission failed');
-                    
-                    // Success
-                    submitButton.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
-                    submitButton.style.backgroundColor = 'var(--success-color)';
-                    form.reset();
-                    
-                    // Reset button after delay
-                    setTimeout(() => {
-                        submitButton.innerHTML = originalText;
-                        submitButton.style.backgroundColor = '';
-                        submitButton.disabled = false;
-                    }, 3000);
-                    
-                } catch (error) {
-                    console.error('Form submission error:', error);
-                    submitButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error - Try Again';
-                    submitButton.style.backgroundColor = 'var(--error-color)';
-                    
-                    setTimeout(() => {
-                        submitButton.innerHTML = originalText;
-                        submitButton.style.backgroundColor = '';
-                        submitButton.disabled = false;
-                    }, 3000);
-                }
-            } else {
-                // Show errors for all invalid fields
-                inputs.forEach(input => {
-                    if (!input.validity.valid) {
-                        showError(input);
-                    }
-                });
-            }
-        });
-    }
-});
-
-function showError(input) {
-    const errorMessage = input.nextElementSibling;
-    if (errorMessage && errorMessage.classList.contains('error-message')) {
-        let message = '';
-        
-        if (input.validity.valueMissing) {
-            message = 'This field is required';
-        } else if (input.validity.typeMismatch) {
-            message = `Please enter a valid ${input.type}`;
-        } else if (input.validity.patternMismatch) {
-            message = input.title || 'Please match the requested format';
-        } else if (input.validity.tooShort) {
-            message = `Must be at least ${input.getAttribute('minlength')} characters`;
-        } else if (input.validity.tooLong) {
-            message = `Must be no more than ${input.getAttribute('maxlength')} characters`;
-        }
-        
-        errorMessage.textContent = message;
-    }
-}
-
-function hideError(input) {
-    const errorMessage = input.nextElementSibling;
-    if (errorMessage && errorMessage.classList.contains('error-message')) {
-        errorMessage.textContent = '';
-    }
-}
+// Make confetti function globally available
+window.triggerConfetti = triggerConfetti;
